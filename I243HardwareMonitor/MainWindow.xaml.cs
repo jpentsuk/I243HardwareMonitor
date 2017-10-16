@@ -24,22 +24,19 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-        CPUTemp cputemp = new CPUTemp();
+        ComputerHardware computerhardware = new ComputerHardware();
 
         public MainWindow()
         {
-			
-			InitializeComponent();
-
+            InitializeComponent();
+            computerhardware.InitializeHardwareMonitor();
             
-            cputemp.InitializeHardwareMonitor();
-		}
+        }
 
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
             // making string from list
-            var message = string.Join(Environment.NewLine, cputemp.Getcpudatalist());
-
+            var message = string.Join(Environment.NewLine, computerhardware.getDataList());
             // adding text into textbox
             txtbOutput.Text = message;
             
