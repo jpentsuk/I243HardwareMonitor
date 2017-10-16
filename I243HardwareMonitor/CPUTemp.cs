@@ -22,40 +22,17 @@ namespace I243HardwareMonitor
     public class CPUTemp
     {
         private OpenHardwareMonitor.Hardware.Computer computerHardware;
+        private List<String> cpudatalist = new List<String>();
         
 
         public CPUTemp()
         {
 
             computerHardware = InitializeHardwareMonitor();
-            Debug.WriteLine(computerHardware.Hardware[0].Name);
-            for (int i = 0; i < 5; i++)
-            {
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[i].Name);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[i].SensorType.ToString());
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[i].Value);
-            }
-            
-                /*
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[0].Name);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[0].SensorType.ToString());
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[0].Value);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[1].Name);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[1].SensorType.ToString());
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[1].Value);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[2].Name);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[2].SensorType.ToString());
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[2].Value);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[3].Name);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[3].SensorType.ToString());
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[3].Value);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[4].Name);
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[4].SensorType.ToString());
-                Debug.WriteLine(computerHardware.Hardware[0].Sensors[4].Value);
-        */
 
-
-            
+            // adding all data into list
+            Setcpudatalist(computerHardware);
+          
         }
 
         public OpenHardwareMonitor.Hardware.Computer InitializeHardwareMonitor()
@@ -66,7 +43,28 @@ namespace I243HardwareMonitor
             return computerHardware;
         }
 
-        
+        public void Setcpudatalist(OpenHardwareMonitor.Hardware.Computer computerHardware)
+        {
+            cpudatalist.Add(computerHardware.Hardware[0].Name);
+
+            for (int i = 0; i < 5; i++)
+            {
+                cpudatalist.Add(computerHardware.Hardware[0].Sensors[i].Name);
+                cpudatalist.Add(computerHardware.Hardware[0].Sensors[i].SensorType.ToString());
+                cpudatalist.Add(computerHardware.Hardware[0].Sensors[i].Value.ToString());
+            }
+            // just printing into console
+            foreach (object o in cpudatalist)
+            {
+                Debug.WriteLine(o);
+            }
+        }
+        public List<String> Getcpudatalist()
+        {
+            return cpudatalist;
+        }
+
+
 
     }
 }

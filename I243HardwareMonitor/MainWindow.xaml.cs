@@ -35,9 +35,14 @@ namespace I243HardwareMonitor
             cputemp.InitializeHardwareMonitor();
 		}
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("tere");
+            // making string from list
+            var message = string.Join(Environment.NewLine, cputemp.Getcpudatalist());
+
+            // adding text into textbox
+            txtbOutput.Text = message;
+            
         }
     }
 }
