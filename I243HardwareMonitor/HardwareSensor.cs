@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace I243HardwareMonitor
 {
-	public class HardwareSensor
+	public class HardwareSensor : Component
 	{
-		public String Name { get; set; }
+		public String Value { get; }
 
-		public String Type { get; set; }
-
-		public String Value { get; set; }
-
-		public HardwareSensor(String name, String sensorType, String currentValue)
+		public HardwareSensor(String name, String type, String currentValue) : base(name, type)
 		{
-			this.Name = name;
-			this.Type = sensorType;
 			this.Value = currentValue;
 		}
 	}
