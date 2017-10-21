@@ -23,7 +23,7 @@ namespace I243HardwareMonitor
     {
 		private OpenHardwareMonitor.Hardware.Computer computerHardware;
 		private int hardwareCount;
-		private List<HardwareSensor> sensorsList;
+		private List<HardwareComponent> hardwareComponents;
 
 		public ComputerHardware()
         {
@@ -33,14 +33,10 @@ namespace I243HardwareMonitor
 			Debug.WriteLine("Hardware count in the system: " + hardwareCount);
 		}
 		
-		public List<HardwareSensor> GetHardwareSensors()
+		public List<HardwareComponent> GetUpdatedHardwareComponents()
 		{
-			return sensorsList;
-		}
-
-		public void UpdateHardwareSensors()
-		{
-			UpdateHardwareSensorsList();
+			UpdateHardwareComponents();
+			return hardwareComponents;
 		}
 
 		private void UpdateComputerHardwareInfo()
@@ -54,67 +50,47 @@ namespace I243HardwareMonitor
 			computerHardware.Open();
 		}
 
-		private void UpdateHardwareSensorsList()
+		private HardwareComponent MapHardwareComponent(OpenHardwareMonitor.Hardware.IHardware hardwareComponent)
+		{
+			String hardwareComponentName, hardwareComponentType;
+			hardwareComponentName = hardwareComponent.Name.ToString();
+			hardwareComponentType = hardwareComponent.HardwareType.ToString();
+			HardwareComponent component = new HardwareComponent(hardwareComponentName, hardwareComponentType);
+
+			int sensorCount = hardwareComponent.Sensors.Count();
+			for (int i = 0; i < sensorCount; i++)
+			{
+				String sensorName, sensorType, sensorValue;
+				sensorName = hardwareComponent.Sensors[i].Name;
+				sensorType = hardwareComponent.Sensors[i].SensorType.ToString();
+				sensorValue = hardwareComponent.Sensors[i].Value.ToString();
+				HardwareSensor sensor = new HardwareSensor(sensorName, sensorType, sensorValue);
+				component.AddSensor(sensor);
+			}
+
+			int subHardwareCount = hardwareComponent.SubHardware.Count();
+			if (subHardwareCount > 0)
+			{
+				for (int u = 0; u < subHardwareCount; u++)
+				{
+					hardwareComponent.SubHardware[u].Update();
+				}
+
+				for (int a = 0; a < subHardwareCount; a++)
+				{
+					component.AddSubHardware(MapHardwareComponent(hardwareComponent.SubHardware[a]));
+				}
+			}
+			return component;
+		}
+
+		private void UpdateHardwareComponents()
 		{
 			computerHardware.Open();
-			sensorsList = new List<HardwareSensor>();
-			String currentSensorName, currentSensorType, currentSensorValue;
+			hardwareComponents = new List<HardwareComponent>();
 			for (int i = 0; i < hardwareCount; i++)
 			{
-				//Add hardware component itself as a sensor to the sensors list
-				//Value is "" due to hardware component itself having no sensor value
-				currentSensorName = computerHardware.Hardware[i].Name.ToString();
-				currentSensorType = computerHardware.Hardware[i].HardwareType.ToString();
-				currentSensorValue = "";
-				sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
-				Debug.WriteLine(currentSensorName);
-				Debug.WriteLine(currentSensorType);
-				Debug.WriteLine(currentSensorValue);
-
-				//Add hardware component sensors to the sensors list
-				int hardwareSensorCount = computerHardware.Hardware[i].Sensors.Count();
-				if (hardwareSensorCount > 0)
-				{
-					for (int u = 0; u < hardwareSensorCount; u++)
-					{
-						currentSensorName = computerHardware.Hardware[i].Sensors[u].Name;
-						currentSensorType = computerHardware.Hardware[i].Sensors[u].SensorType.ToString();
-						currentSensorValue = computerHardware.Hardware[i].Sensors[u].Value.ToString();
-						sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
-					}
-				}
-				
-				//Update SubHardware info so it can be aqcuired
-				int subHardwareCount = computerHardware.Hardware[i].SubHardware.Count();
-				if (subHardwareCount > 0)
-				{
-					for (int u = 0; u < subHardwareCount; u++)
-					{
-						computerHardware.Hardware[i].SubHardware[u].Update();
-					}
-
-					//Add hardware component subhardware itself as a sensor to the sensors list
-					//Value is "" due to hardware component itself having no sensor value
-					for (int u = 0; u < subHardwareCount; u++)
-					{
-						currentSensorName = computerHardware.Hardware[i].SubHardware[u].Name;
-						currentSensorType = computerHardware.Hardware[i].SubHardware[u].HardwareType.ToString();
-						currentSensorValue = "";
-						sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
-
-						//Add hardware component subhardware sensors to the sensors list
-						int subHardwareSensorCount = computerHardware.Hardware[i].SubHardware[u].Sensors.Count();
-						for (int a = 0; a < subHardwareSensorCount; a++)
-						{
-							currentSensorName = computerHardware.Hardware[i].SubHardware[u].Sensors[a].Name;
-							currentSensorType = computerHardware.Hardware[i].SubHardware[u].Sensors[a].SensorType.ToString();
-							currentSensorValue = computerHardware.Hardware[i].SubHardware[u].Sensors[a].Value.ToString();
-							sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
-						}
-					}
-				}
-
-
+				hardwareComponents.Add(MapHardwareComponent(computerHardware.Hardware[i]));
 			}
 			computerHardware.Close();
 		}

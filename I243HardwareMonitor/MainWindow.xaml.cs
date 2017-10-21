@@ -35,8 +35,7 @@ namespace I243HardwareMonitor
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
 			List<String> dataList = new List<String>();
-			computerhardware.UpdateHardwareSensors();
-			List<HardwareSensor> hardwareSensors = computerhardware.GetHardwareSensors();
+			List<HardwareComponent> hardwareComponents = computerhardware.GetUpdatedHardwareComponents();
 			for (int i = 0; i < hardwareSensors.Count; i++)
 			{
 				dataList.Add(hardwareSensors[i].Name);
@@ -58,10 +57,7 @@ namespace I243HardwareMonitor
         private void Help_Click(object sender, RoutedEventArgs e)
         {
            
-            Window helpwindow = new Window();
-            helpwindow.Title = "Help";
-            helpwindow.Height = 300;
-            helpwindow.Width = 200;
+            var helpwindow = new Help();
             helpwindow.Show();
 
         }

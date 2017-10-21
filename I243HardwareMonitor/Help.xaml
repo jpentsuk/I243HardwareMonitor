@@ -1,0 +1,13 @@
+﻿<Window x:Class="I243HardwareMonitor.Help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:I243HardwareMonitor"
+        mc:Ignorable="d"
+        Title="Help" Height="300" Width="350">
+    <Grid>
+        <Label x:Name="label" Content="Here we going to have some application tutorial" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
