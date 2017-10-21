@@ -15,5 +15,15 @@ namespace I243HardwareMonitor
 			this.SubHardware = new List<HardwareComponent>();
 			this.Sensors = new List<HardwareSensor>();
 		}
+
+		public void AddSensor(HardwareSensor sensor)
+		{
+			Sensors.Add(sensor);
+		}
+
+		public void AddSubHardware(HardwareComponent component)
+		{
+			SubHardware.Add(component);
+		}
 	}
 }
