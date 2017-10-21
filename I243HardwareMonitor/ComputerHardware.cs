@@ -21,59 +21,91 @@ namespace I243HardwareMonitor
 {
     public class ComputerHardware
     {
-        private OpenHardwareMonitor.Hardware.Computer computerHardware;
-        private String name;
-        private String type;
-        private String value;
-        private List<String> dataList = new List<String>();
+		private OpenHardwareMonitor.Hardware.Computer computerHardware;
+		private int hardwareCount;
+		private List<HardwareSensor> sensorsList;
 
-        public ComputerHardware()
+		public ComputerHardware()
         {
-            computerHardware = InitializeHardwareMonitor();
-            HardwareSensors sensorInfo = new HardwareSensors(computerHardware);
-            name = sensorInfo.getHardWareSensorName();
-            type = sensorInfo.getHardWareSensorType();
-            value = sensorInfo.gethardWareSensorValue();
-            printIntoConsole();
-        }
+			computerHardware = new OpenHardwareMonitor.Hardware.Computer();
+			UpdateComputerHardwareInfo();
+			this.hardwareCount = computerHardware.Hardware.Count();
+			UpdateHardwareSensorsList();
+		}
+		
+		public List<HardwareSensor> getCurrentHardwareSensors()
+		{
+			return sensorsList;
+		}
 
-        public OpenHardwareMonitor.Hardware.Computer getComputerHardware(OpenHardwareMonitor.Hardware.Computer computerHardware)
-        {
-            return computerHardware;
-        }
+		public void updateCurrentHardwareSensors()
+		{
+			UpdateComputerHardwareInfo();
+			UpdateHardwareSensorsList();
+		}
 
-        public OpenHardwareMonitor.Hardware.Computer InitializeHardwareMonitor()
-        {
-            OpenHardwareMonitor.Hardware.Computer computerHardware = new OpenHardwareMonitor.Hardware.Computer();
-            computerHardware.CPUEnabled = true;
+		private void UpdateComputerHardwareInfo()
+		{
 			computerHardware.MainboardEnabled = true;
-			computerHardware.RAMEnabled = true;
+			computerHardware.FanControllerEnabled = true;
+			computerHardware.CPUEnabled = true;
 			computerHardware.GPUEnabled = true;
-            computerHardware.Open();
-            return computerHardware;
-        }
+			computerHardware.RAMEnabled = true;
+			computerHardware.HDDEnabled = true;
+		}
 
-        public String getComputerHardwareName()
-        {
-            return computerHardware.Hardware[0].Name.ToString();
-        }
+		private void UpdateHardwareSensorsList()
+		{
+			computerHardware.Open();
+			sensorsList = new List<HardwareSensor>();
+			String currentSensorName, currentSensorType, currentSensorValue;
+			for (int i = 0; i < hardwareCount; i++)
+			{
+				//Add hardware component itself as a sensor to the sensors list
+				//Value is "" due to hardware component itself having no sensor value
+				currentSensorName = computerHardware.Hardware[i].Name.ToString();
+				currentSensorType = computerHardware.Hardware[i].HardwareType.ToString();
+				currentSensorValue = "";
+				sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
 
-        public List<String> getDataList()
-        {
-            dataList.Add(getComputerHardwareName());
-            dataList.Add(name);
-            dataList.Add(type);
-            dataList.Add(value);
-            return dataList;
-        }
+				//Add hardware component sensors to the sensors list
+				int hardwareSensorCount = computerHardware.Hardware[i].Sensors.Count();
+				for (int u = 0; u < hardwareSensorCount; u++)
+				{
+					currentSensorName = computerHardware.Hardware[i].Sensors[u].Name;
+					currentSensorType = computerHardware.Hardware[i].Sensors[u].SensorType.ToString();
+					currentSensorValue = computerHardware.Hardware[i].Sensors[u].Value.ToString();
+					sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
+				}
 
-        //just print out to console
-        public void printIntoConsole()
-        {
-            Debug.WriteLine(getComputerHardwareName());
-            Debug.WriteLine(name);
-            Debug.WriteLine(type);
-            Debug.WriteLine(value);
-        }
+				//Update SubHardware info so it can be aqcuired
+				int subHardwareCount = computerHardware.Hardware[i].SubHardware.Count();
+				for (int u = 0; u < subHardwareCount; u++)
+				{
+					computerHardware.Hardware[i].SubHardware[u].Update();
+				}
+
+				//Add hardware component subhardware itself as a sensor to the sensors list
+				//Value is "" due to hardware component itself having no sensor value
+				for (int u = 0; u < subHardwareCount; u++)
+				{
+					currentSensorName = computerHardware.Hardware[i].SubHardware[u].Name;
+					currentSensorType = computerHardware.Hardware[i].SubHardware[u].HardwareType.ToString();
+					currentSensorValue = "";
+					sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
+
+					//Add hardware component subhardware sensors to the sensors list
+					int subHardwareSensorCount = computerHardware.Hardware[i].SubHardware[u].Sensors.Count();
+					for (int a = 0; a < subHardwareSensorCount; a++)
+					{
+						currentSensorName = computerHardware.Hardware[i].SubHardware[u].Sensors[a].Name;
+						currentSensorType = computerHardware.Hardware[i].SubHardware[u].Sensors[a].SensorType.ToString();
+						currentSensorValue = computerHardware.Hardware[i].SubHardware[u].Sensors[a].Value.ToString();
+						sensorsList.Add(new HardwareSensor(currentSensorName, currentSensorType, currentSensorValue));
+					}
+				}
+			}
+			computerHardware.Close();
+		}
     }
 }
