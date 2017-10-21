@@ -34,6 +34,7 @@ namespace I243HardwareMonitor
 
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
 			List<String> dataList = new List<String>();
 			List<HardwareComponent> hardwareComponents = computerhardware.GetUpdatedHardwareComponents();
 			for (int i = 0; i < hardwareSensors.Count; i++)
@@ -46,6 +47,32 @@ namespace I243HardwareMonitor
 			Debug.WriteLine(message);
 			// adding text into textbox
 			txtbOutput.Text = message;
+=======
+            String selection = cmb_makedecision.Text;
+            if (selection == "Store in textbox")
+            {
+                List<String> dataList = new List<String>();
+                computerhardware.UpdateHardwareSensors();
+                List<HardwareSensor> hardwareSensors = computerhardware.GetHardwareSensors();
+                for (int i = 0; i < hardwareSensors.Count; i++)
+                {
+                    dataList.Add(hardwareSensors[i].Name);
+                    dataList.Add(hardwareSensors[i].Type);
+                    dataList.Add(hardwareSensors[i].Value);
+                }
+                var message = string.Join(Environment.NewLine, dataList);
+                Debug.WriteLine(message);
+                // adding text into textbox
+                txtbOutput.Text = message;
+            }
+            else
+            {
+                MessageBox.Show("That does not work yet");
+            }
+            
+
+			
+>>>>>>> 49de69e95157d4ab172407308ba23efc6642c2b9
         }
 
         // application close
@@ -60,6 +87,11 @@ namespace I243HardwareMonitor
             var helpwindow = new Help();
             helpwindow.Show();
 
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btn_Start.IsEnabled = true;
         }
     }
 }

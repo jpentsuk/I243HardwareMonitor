@@ -17,10 +17,18 @@
                 </MenuItem>
 
             </Menu>
-            <StackPanel></StackPanel>
+            <StackPanel>
+                <Label x:Name="lbl_makedecision" Content="Make your decision"/>
+            </StackPanel>
         </DockPanel>
         <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="19,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="420,30,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click"/>
-        
+        <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="420,30,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click" IsEnabled="False"/>
+        <ComboBox x:Name="cmb_makedecision" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.048,0.339" SelectionChanged="comboBox_SelectionChanged">
+            <ComboBoxItem>Store in textbox</ComboBoxItem>
+            <ComboBoxItem>Show in realtime</ComboBoxItem>
+            <ComboBoxItem>Save in local database</ComboBoxItem>
+            <ComboBoxItem>Save in remote database</ComboBoxItem>
+        </ComboBox>
+
     </Grid>
 </Window>
