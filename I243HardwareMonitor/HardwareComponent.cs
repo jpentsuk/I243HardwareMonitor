@@ -10,6 +10,7 @@ namespace I243HardwareMonitor
 	{
 		private List<HardwareComponent> SubHardware { get; }
 		private List<HardwareSensor> Sensors { get; }
+		private int sensorCount, subHardwareCount;
 		public HardwareComponent(String name, String type) : base(name, type)
 		{
 			this.SubHardware = new List<HardwareComponent>();
@@ -24,6 +25,31 @@ namespace I243HardwareMonitor
 		public void AddSubHardware(HardwareComponent component)
 		{
 			SubHardware.Add(component);
+		}
+
+		public override string ToString()
+		{
+			String combinedInfo;
+			sensorCount = Sensors.Count();
+			subHardwareCount = SubHardware.Count();
+			combinedInfo = this.Name + Environment.NewLine + this.Type + Environment.NewLine;
+			if (sensorCount > 0)
+			{
+				for (int i = 0; i < sensorCount; i++)
+				{
+					combinedInfo += Sensors[i].Name + Environment.NewLine + Sensors[i].Type + Environment.NewLine + Sensors[i].Value + Environment.NewLine;
+				}
+			}
+
+			if (subHardwareCount > 0)
+			{
+				for (int u = 0; u < subHardwareCount; u++)
+				{
+					combinedInfo += SubHardware[u].ToString();
+				}
+			}
+
+			return combinedInfo;
 		}
 	}
 }
