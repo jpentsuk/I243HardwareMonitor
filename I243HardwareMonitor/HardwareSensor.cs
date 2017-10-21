@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace I243HardwareMonitor
 {
-    public class HardwareSensor
-    {
+	public class HardwareSensor
+	{
 		public String Name
 		{
 			get
@@ -19,7 +19,7 @@ namespace I243HardwareMonitor
 				this.Name = value;
 			}
 		}
-		
+
 		public String SensorType
 		{
 			get
@@ -32,7 +32,7 @@ namespace I243HardwareMonitor
 			}
 		}
 
-		public int CurrentValue
+		public String CurrentValue
 		{
 			get
 			{
@@ -44,10 +44,13 @@ namespace I243HardwareMonitor
 			}
 		}
 
-        public HardwareSensor(String name, String sensorType, int currentValue)
-        {
+		public HardwareSensor(String name, String sensorType, String currentValue)
+		{
 			this.Name = name;
 			this.SensorType = sensorType;
 			this.CurrentValue = currentValue;
-        }
+		}
+
+
+	}
 }
