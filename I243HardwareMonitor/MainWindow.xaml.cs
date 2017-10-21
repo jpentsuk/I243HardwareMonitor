@@ -58,10 +58,7 @@ namespace I243HardwareMonitor
         private void Help_Click(object sender, RoutedEventArgs e)
         {
            
-            Window helpwindow = new Window();
-            helpwindow.Title = "Help";
-            helpwindow.Height = 300;
-            helpwindow.Width = 200;
+            var helpwindow = new Help();
             helpwindow.Show();
 
         }
