@@ -8,49 +8,17 @@ namespace I243HardwareMonitor
 {
 	public class HardwareSensor
 	{
-		public String Name
-		{
-			get
-			{
-				return this.Name;
-			}
-			set
-			{
-				this.Name = value;
-			}
-		}
+		public String Name { get; set; }
 
-		public String SensorType
-		{
-			get
-			{
-				return this.SensorType;
-			}
-			set
-			{
-				this.SensorType = value;
-			}
-		}
+		public String Type { get; set; }
 
-		public String CurrentValue
-		{
-			get
-			{
-				return this.CurrentValue;
-			}
-			set
-			{
-				this.CurrentValue = value;
-			}
-		}
+		public String Value { get; set; }
 
 		public HardwareSensor(String name, String sensorType, String currentValue)
 		{
 			this.Name = name;
-			this.SensorType = sensorType;
-			this.CurrentValue = currentValue;
+			this.Type = sensorType;
+			this.Value = currentValue;
 		}
-
-
 	}
 }
