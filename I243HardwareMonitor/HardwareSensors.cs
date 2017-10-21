@@ -6,27 +6,48 @@ using System.Threading.Tasks;
 
 namespace I243HardwareMonitor
 {
-    public class HardwareSensors
+    public class HardwareSensor
     {
-        private OpenHardwareMonitor.Hardware.Computer computerHardware; 
+		public String Name
+		{
+			get
+			{
+				return this.Name;
+			}
+			set
+			{
+				this.Name = value;
+			}
+		}
+		
+		public String SensorType
+		{
+			get
+			{
+				return this.SensorType;
+			}
+			set
+			{
+				this.SensorType = value;
+			}
+		}
 
-        public HardwareSensors(OpenHardwareMonitor.Hardware.Computer computerHardware)
-        {
-            this.computerHardware = computerHardware;
-        }
+		public int CurrentValue
+		{
+			get
+			{
+				return this.CurrentValue;
+			}
+			set
+			{
+				this.CurrentValue = value;
+			}
+		}
 
-        public String getHardWareSensorName()
+        public HardwareSensor(String name, String sensorType, int currentValue)
         {
-            return computerHardware.Hardware[0].Sensors[0].Name.ToString();
+			this.Name = name;
+			this.SensorType = sensorType;
+			this.CurrentValue = currentValue;
         }
-
-        public String getHardWareSensorType()
-        {
-            return computerHardware.Hardware[0].Sensors[0].SensorType.ToString();
-        }
-        public String gethardWareSensorValue()
-        {
-            return computerHardware.Hardware[0].Sensors[0].Value.ToString();
-        }
-    }
 }
