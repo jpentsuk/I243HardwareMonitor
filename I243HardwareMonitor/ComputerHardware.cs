@@ -46,6 +46,9 @@ namespace I243HardwareMonitor
         {
             OpenHardwareMonitor.Hardware.Computer computerHardware = new OpenHardwareMonitor.Hardware.Computer();
             computerHardware.CPUEnabled = true;
+			computerHardware.MainboardEnabled = true;
+			computerHardware.RAMEnabled = true;
+			computerHardware.GPUEnabled = true;
             computerHardware.Open();
             return computerHardware;
         }
