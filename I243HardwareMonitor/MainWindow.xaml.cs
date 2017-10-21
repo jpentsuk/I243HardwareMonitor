@@ -30,7 +30,6 @@ namespace I243HardwareMonitor
         {
             InitializeComponent();
             computerhardware.InitializeHardwareMonitor();
-            
         }
 
         private void btn_Start_Click(object sender, RoutedEventArgs e)
@@ -39,7 +38,6 @@ namespace I243HardwareMonitor
             var message = string.Join(Environment.NewLine, computerhardware.getDataList());
             // adding text into textbox
             txtbOutput.Text = message;
-            
         }
     }
 }

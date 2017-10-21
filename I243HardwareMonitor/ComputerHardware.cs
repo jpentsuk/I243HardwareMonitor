@@ -25,21 +25,16 @@ namespace I243HardwareMonitor
         private String name;
         private String type;
         private String value;
-
         private List<String> dataList = new List<String>();
-
-
 
         public ComputerHardware()
         {
             computerHardware = InitializeHardwareMonitor();
-
             HardwareSensors sensorInfo = new HardwareSensors(computerHardware);
             name = sensorInfo.getHardWareSensorName();
             type = sensorInfo.getHardWareSensorType();
             value = sensorInfo.gethardWareSensorValue();
             printIntoConsole();
-
         }
 
         public OpenHardwareMonitor.Hardware.Computer getComputerHardware(OpenHardwareMonitor.Hardware.Computer computerHardware)
@@ -72,12 +67,10 @@ namespace I243HardwareMonitor
         //just print out to console
         public void printIntoConsole()
         {
-
             Debug.WriteLine(getComputerHardwareName());
             Debug.WriteLine(name);
             Debug.WriteLine(type);
             Debug.WriteLine(value);
-            
         }
     }
 }

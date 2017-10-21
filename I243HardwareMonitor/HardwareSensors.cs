@@ -8,8 +8,7 @@ namespace I243HardwareMonitor
 {
     public class HardwareSensors
     {
-        private OpenHardwareMonitor.Hardware.Computer computerHardware;
-        
+        private OpenHardwareMonitor.Hardware.Computer computerHardware; 
 
         public HardwareSensors(OpenHardwareMonitor.Hardware.Computer computerHardware)
         {
