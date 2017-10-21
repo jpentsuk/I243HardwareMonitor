@@ -24,20 +24,29 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-        ComputerHardware computerhardware = new ComputerHardware();
+        ComputerHardware computerhardware;
 
         public MainWindow()
         {
-            InitializeComponent();
-            computerhardware.InitializeHardwareMonitor();
-        }
+			computerhardware = new ComputerHardware();
+			InitializeComponent();
+		}
 
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
-            // making string from list
-            var message = string.Join(Environment.NewLine, computerhardware.getDataList());
-            // adding text into textbox
-            txtbOutput.Text = message;
+			List<String> dataList = new List<String>();
+			computerhardware.UpdateHardwareSensors();
+			List<HardwareSensor> hardwareSensors = computerhardware.GetHardwareSensors();
+			for (int i = 0; i < hardwareSensors.Count; i++)
+			{
+				dataList.Add(hardwareSensors[i].Name);
+				dataList.Add(hardwareSensors[i].Type);
+				dataList.Add(hardwareSensors[i].Value);
+			}
+			var message = string.Join(Environment.NewLine, dataList);
+			Debug.WriteLine(message);
+			// adding text into textbox
+			txtbOutput.Text = message;
         }
     }
 }
