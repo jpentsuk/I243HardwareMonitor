@@ -48,5 +48,11 @@ namespace I243HardwareMonitor
 			// adding text into textbox
 			txtbOutput.Text = message;
         }
+
+        // application close
+        private void File_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
