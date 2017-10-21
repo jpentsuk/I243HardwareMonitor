@@ -54,5 +54,16 @@ namespace I243HardwareMonitor
         {
             Environment.Exit(0);
         }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+           
+            Window helpwindow = new Window();
+            helpwindow.Title = "Help";
+            helpwindow.Height = 300;
+            helpwindow.Width = 200;
+            helpwindow.Show();
+
+        }
     }
 }
