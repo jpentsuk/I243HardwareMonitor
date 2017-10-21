@@ -33,12 +33,12 @@ namespace I243HardwareMonitor
 			UpdateHardwareSensorsList();
 		}
 		
-		public List<HardwareSensor> getCurrentHardwareSensors()
+		public List<HardwareSensor> getHardwareSensors()
 		{
 			return sensorsList;
 		}
 
-		public void updateCurrentHardwareSensors()
+		public void updateHardwareSensors()
 		{
 			UpdateComputerHardwareInfo();
 			UpdateHardwareSensorsList();
