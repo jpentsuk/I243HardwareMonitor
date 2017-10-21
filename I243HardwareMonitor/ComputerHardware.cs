@@ -55,6 +55,7 @@ namespace I243HardwareMonitor
 			String hardwareComponentName, hardwareComponentType;
 			hardwareComponentName = hardwareComponent.Name.ToString();
 			hardwareComponentType = hardwareComponent.HardwareType.ToString();
+			Debug.WriteLine(hardwareComponent.Identifier.ToString());
 			HardwareComponent component = new HardwareComponent(hardwareComponentName, hardwareComponentType);
 
 			int sensorCount = hardwareComponent.Sensors.Count();
