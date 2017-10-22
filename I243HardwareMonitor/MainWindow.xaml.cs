@@ -24,11 +24,10 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-        ComputerHardware computerhardware;
+	    private HardwareInfo hardware = new HardwareInfo();
 
         public MainWindow()
         {
-			computerhardware = new ComputerHardware();
 			InitializeComponent();
 		}
 
@@ -37,16 +36,10 @@ namespace I243HardwareMonitor
             String selection = cmb_makedecision.Text;
             if (selection == "Store in textbox")
             {
-				String message = "";
-				List<HardwareComponent> components = computerhardware.GetUpdatedHardwareComponents();
-                for (int i = 0; i < components.Count; i++)
-                {
-					message += components[i].ToString();
-                }
-                
-                Debug.WriteLine(message);
-                // adding text into textbox
-                txtbOutput.Text = message;
+				txtbOutput.Text = hardware.ToString();
+				hardware.Update();
+	            Debug.WriteLine("Test");
+				Debug.WriteLine(hardware.CPUs[0].ToString());
             }
             else
             {
