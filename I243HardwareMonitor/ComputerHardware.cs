@@ -52,11 +52,12 @@ namespace I243HardwareMonitor
 
 		private HardwareComponent MapHardwareComponent(OpenHardwareMonitor.Hardware.IHardware hardwareComponent)
 		{
-			String hardwareComponentName, hardwareComponentType;
+			String hardwareComponentName, hardwareComponentType, hardwareComponentIdentifier;
 			hardwareComponentName = hardwareComponent.Name.ToString();
 			hardwareComponentType = hardwareComponent.HardwareType.ToString();
+			hardwareComponentIdentifier = hardwareComponent.Identifier.ToString();
 			Debug.WriteLine(hardwareComponent.Identifier.ToString());
-			HardwareComponent component = new HardwareComponent(hardwareComponentName, hardwareComponentType);
+			HardwareComponent component = new HardwareComponent(hardwareComponentName, hardwareComponentType, hardwareComponentIdentifier);
 
 			int sensorCount = hardwareComponent.Sensors.Count();
 			hardwareComponent.Update();

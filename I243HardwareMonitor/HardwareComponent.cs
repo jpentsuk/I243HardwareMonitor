@@ -8,11 +8,13 @@ namespace I243HardwareMonitor
 {
 	public class HardwareComponent : Component
 	{
+		public String Identifier { get; }
 		private List<HardwareComponent> SubHardware { get; }
 		private List<HardwareSensor> Sensors { get; }
 		private int sensorCount, subHardwareCount;
-		public HardwareComponent(String name, String type) : base(name, type)
+		public HardwareComponent(String name, String type, String identifier) : base(name, type)
 		{
+			this.Identifier = identifier;
 			this.SubHardware = new List<HardwareComponent>();
 			this.Sensors = new List<HardwareSensor>();
 		}
