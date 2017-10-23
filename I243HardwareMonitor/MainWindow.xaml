@@ -9,12 +9,17 @@
 
     <TabControl>
         <TabItem Header="General">
-            <Grid>
+            <Grid Margin="0,-3,0,3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="96*"/>
                     <ColumnDefinition Width="415*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="19,178,0,-9" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="10,159,0,0" 
+                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                         ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                         ScrollViewer.CanContentScroll="True" RenderTransformOrigin="0.422,-0.203"/>
+
                 <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="323.667,30,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click" IsEnabled="False" Grid.Column="1"/>
                 <ComboBox x:Name="cmb_makedecision" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.048,0.339" SelectionChanged="comboBox_SelectionChanged" Grid.ColumnSpan="2">
                     <ComboBoxItem>Store in textbox</ComboBoxItem>
@@ -25,6 +30,8 @@
                 <Button x:Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="47.667,261,0,0" VerticalAlignment="Top" Width="75" Click="btn_clear_Click" IsEnabled="False" Grid.Column="1"/>
                 <Button x:Name="btn_exit1" Content="Exit" HorizontalAlignment="Left" Margin="329.667,261,0,0" VerticalAlignment="Top" Width="75" Click="btn_exit1_Click" Grid.Column="1"/>
                 <Button x:Name="btn_help" Content="?" Grid.Column="1" HorizontalAlignment="Left" Margin="371,0,0,0" VerticalAlignment="Top" Width="28" Click="btn_help_Click"/>
+                <Label x:Name="lbl_realtime" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="138,2,0,0" VerticalAlignment="Top" FontSize="9"/>
+                <Button x:Name="btn_abort" Content="Abort" Grid.Column="1" HorizontalAlignment="Left" Margin="324,55,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btn_abort_Click"/>
 
             </Grid>
         </TabItem>
