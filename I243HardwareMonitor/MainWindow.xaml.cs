@@ -34,9 +34,15 @@ namespace I243HardwareMonitor
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {
             String selection = cmb_makedecision.Text;
-            if (selection == "Store in textbox")
+            if (selection == "")
             {
-				txtbOutput.Text = hardware.ToString();
+                MessageBox.Show("You have to choose something!");
+            }
+            else if (selection == "Store in textbox")
+            {
+                btn_clear.IsEnabled = true;
+                cmb_makedecision.Text = "";
+                txtbOutput.Text = hardware.ToString();
 				hardware.Update();
 	            Debug.WriteLine("Test");
 				Debug.WriteLine(hardware.CPUs[0].ToString());
@@ -48,22 +54,28 @@ namespace I243HardwareMonitor
         }
 
         // application close
-        private void File_Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void Help_Click(object sender, RoutedEventArgs e)
-        {
-           
-            var helpwindow = new Help();
-            helpwindow.Show();
-
-        }
+        
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btn_Start.IsEnabled = true;
+        }
+
+        private void btn_clear_Click(object sender, RoutedEventArgs e)
+        {
+            txtbOutput.Clear();
+            btn_clear.IsEnabled = false;
+        }
+
+        private void btn_exit1_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void btn_help_Click(object sender, RoutedEventArgs e)
+        {
+            var helpwindow = new Help();
+            helpwindow.Show();
         }
     }
 }

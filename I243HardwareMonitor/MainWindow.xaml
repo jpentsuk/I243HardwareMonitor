@@ -6,29 +6,35 @@
         xmlns:local="clr-namespace:I243HardwareMonitor"
         mc:Ignorable="d"
         Title="Hardware Monitor" Height="350" Width="525">
-    
-    <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_Exit" Click="File_Exit_Click"/>
-                </MenuItem>
-                <MenuItem Header="_Help" Click="Help_Click">
-                </MenuItem>
 
-            </Menu>
-            <StackPanel>
-                <Label x:Name="lbl_makedecision" Content="Make your decision"/>
-            </StackPanel>
-        </DockPanel>
-        <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="19,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="420,30,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click" IsEnabled="False"/>
-        <ComboBox x:Name="cmb_makedecision" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.048,0.339" SelectionChanged="comboBox_SelectionChanged">
-            <ComboBoxItem>Store in textbox</ComboBoxItem>
-            <ComboBoxItem>Show in realtime</ComboBoxItem>
-            <ComboBoxItem>Save in local database</ComboBoxItem>
-            <ComboBoxItem>Save in remote database</ComboBoxItem>
-        </ComboBox>
+    <TabControl>
+        <TabItem Header="General">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="96*"/>
+                    <ColumnDefinition Width="415*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="19,178,0,-9" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+                <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="323.667,30,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click" IsEnabled="False" Grid.Column="1"/>
+                <ComboBox x:Name="cmb_makedecision" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.048,0.339" SelectionChanged="comboBox_SelectionChanged" Grid.ColumnSpan="2">
+                    <ComboBoxItem>Store in textbox</ComboBoxItem>
+                    <ComboBoxItem>Show in realtime</ComboBoxItem>
+                    <ComboBoxItem>Save in local database</ComboBoxItem>
+                    <ComboBoxItem>Save in remote database</ComboBoxItem>
+                </ComboBox>
+                <Button x:Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="47.667,261,0,0" VerticalAlignment="Top" Width="75" Click="btn_clear_Click" IsEnabled="False" Grid.Column="1"/>
+                <Button x:Name="btn_exit1" Content="Exit" HorizontalAlignment="Left" Margin="329.667,261,0,0" VerticalAlignment="Top" Width="75" Click="btn_exit1_Click" Grid.Column="1"/>
+                <Button x:Name="btn_help" Content="?" Grid.Column="1" HorizontalAlignment="Left" Margin="371,0,0,0" VerticalAlignment="Top" Width="28" Click="btn_help_Click"/>
 
-    </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Database">
+            
+        </TabItem>
+        
+    </TabControl>
+
+
+
+
 </Window>
