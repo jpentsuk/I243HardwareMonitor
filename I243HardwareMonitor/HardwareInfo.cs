@@ -8,7 +8,7 @@ namespace I243HardwareMonitor
 {
 	public class HardwareInfo
 	{
-		private List<HardwareComponent> components;
+		public List<HardwareComponent> Components { set; get; }
 		private ComputerHardware computerhardware;
 		public List<HardwareComponent> CPUs, GPUs, FanControllers, HDDs;
 		public HardwareComponent Motherboard { set; get; }
@@ -20,8 +20,8 @@ namespace I243HardwareMonitor
 			GPUs = new List<HardwareComponent>();
 			FanControllers = new List<HardwareComponent>();
 			HDDs = new List<HardwareComponent>();
-			components = computerhardware.GetUpdatedHardwareComponents();
-			MapComponentToIdentifier(components);
+			Components = computerhardware.GetUpdatedHardwareComponents();
+			MapComponentToIdentifier(Components);
 		}
 
 		public void Update()
@@ -30,21 +30,16 @@ namespace I243HardwareMonitor
 			GPUs = new List<HardwareComponent>();
 			FanControllers = new List<HardwareComponent>();
 			HDDs = new List<HardwareComponent>();
-			components = computerhardware.GetUpdatedHardwareComponents();
-			MapComponentToIdentifier(components);
-		}
-
-		public List<HardwareComponent> GetAllComponents()
-		{
-			return components;
+			Components = computerhardware.GetUpdatedHardwareComponents();
+			MapComponentToIdentifier(Components);
 		}
 
 		public override string ToString()
 		{
 			String fullString = "";
-			for (int i = 0; i < components.Count; i++)
+			for (int i = 0; i < Components.Count; i++)
 			{
-				fullString += components[i].ToString();
+				fullString += Components[i].ToString();
 			}
 
 			return fullString;
