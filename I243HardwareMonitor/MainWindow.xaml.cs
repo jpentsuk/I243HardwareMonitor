@@ -46,10 +46,8 @@ namespace I243HardwareMonitor
                 btn_Start.IsEnabled = false;
                 cmb_makedecision.Text = "";
                 txtbOutput.Text = hardware.ToString();
-				hardware.Update();
-	            Debug.WriteLine("Test");
-				Debug.WriteLine(hardware.CPUs[0].ToString());
-            }
+	            hardware.Update();
+			}
             else if(selection== "Show in realtime")
 
             {
