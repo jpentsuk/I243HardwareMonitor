@@ -94,7 +94,7 @@ namespace I243HardwareMonitor
 			{
 				hardwareComponents.Add(MapHardwareComponent(computerHardware.Hardware[i]));
 			}
-			computerHardware.Close();
+			//computerHardware.Close();
 		}
     }
 }
