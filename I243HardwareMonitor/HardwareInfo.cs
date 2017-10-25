@@ -9,10 +9,10 @@ namespace I243HardwareMonitor
 	public class HardwareInfo
 	{
 		public List<HardwareComponent> Components { set; get; }
-		private ComputerHardware computerhardware;
 		public List<HardwareComponent> CPUs, GPUs, FanControllers, HDDs;
 		public HardwareComponent Motherboard { set; get; }
 		public HardwareComponent RAM { set; get; }
+		private ComputerHardware computerhardware;
 		public HardwareInfo()
 		{
 			computerhardware = new ComputerHardware();
@@ -24,16 +24,25 @@ namespace I243HardwareMonitor
 			MapComponentToIdentifier(Components);
 		}
 
+		// Update method re-initializes all known Hardware Components from this instance of Hardware Info and then requests new ones
+		// Then the new Hardware Components are stored in the public variables (GPUs, CPUs, FanControllers, HDDs, Motherboard, RAM) so they can be accessed separately by type
+		// This method can be used to update all info stored in the Hardware Info object before using it or writing it out
 		public void Update()
 		{
+			// These Hardware Component lists need to be re-initialized to avoid duplicates of same component when updating info
 			CPUs = new List<HardwareComponent>();
 			GPUs = new List<HardwareComponent>();
 			FanControllers = new List<HardwareComponent>();
 			HDDs = new List<HardwareComponent>();
+
+			// Then we get a new list of all Hardware Components and map them to be publicly accessible
 			Components = computerhardware.GetUpdatedHardwareComponents();
 			MapComponentToIdentifier(Components);
 		}
 
+		// ToString method recursively returns the name, type and value of every Hardware Component, its Hardware Sensors and sub Hardware Components (and Sensors, if any) as a combined String
+		// Every name, type and value ends with a newline
+		// This method is intended to be used for debugging
 		public override string ToString()
 		{
 			String fullString = "";
@@ -45,6 +54,8 @@ namespace I243HardwareMonitor
 			return fullString;
 		}
 
+		// MapComponentsToIdentifier method finds and maps the correct Hardware Components to the correct public variable based on Hardware Component public identifier
+		// This method is used to make Hardware Info public variables populated so we can access specific Hardware Component (or their sensors) info
 		private void MapComponentToIdentifier(List<HardwareComponent> components)
 		{
 			for (int i = 0; i < components.Count(); i++)
