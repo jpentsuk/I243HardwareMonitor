@@ -88,7 +88,7 @@ namespace I243HardwareMonitor
 
 		private void UpdateHardwareComponents()
 		{
-			computerHardware.Open();
+			//computerHardware.Open();
 			hardwareComponents = new List<HardwareComponent>();
 			for (int i = 0; i < hardwareCount; i++)
 			{
