@@ -45,7 +45,9 @@ namespace I243HardwareMonitor
                 btn_clear.IsEnabled = true;
                 btn_Start.IsEnabled = false;
                 cmb_makedecision.Text = "";
-                txtbOutput.Text = hardware.ToString();
+				String debugHardwareInfo = hardware.ToString();
+				txtbOutput.Text = debugHardwareInfo;
+				Debug.WriteLine(debugHardwareInfo);
 	            hardware.Update();
 			}
             else if(selection== "Show in realtime")
