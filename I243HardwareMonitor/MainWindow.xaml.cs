@@ -25,21 +25,47 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-	   
+
+        UserControlCPU ucontrolcpu = new UserControlCPU();
+        UserControlGPU ucontrolgpu = new UserControlGPU();
+        
         public MainWindow()
         {
 			InitializeComponent();
-            UserControlCPU ucontrolcpu = new UserControlCPU();
-            UserControlGPU ucontrolgpu = new UserControlGPU();
-            
             stc_cpu.Children.Add(ucontrolcpu);
             stc_gpu.Children.Add(ucontrolgpu);
-            
+
         }
         private void btn_Help_Click(object sender, RoutedEventArgs e)
         {
             var helpwindow = new Help();
             helpwindow.Show();
         }
+
+        public void chc_cpu_Checked(object sender, RoutedEventArgs e)
+        {
+            stc_cpu.Children.Remove(ucontrolcpu);
+            stc_cpu.Children.Add(ucontrolcpu);
+        }
+
+        private void chc_cpu_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stc_cpu.Children.Remove(ucontrolcpu);
+        }
+
+        private void chc_gpu_Checked(object sender, RoutedEventArgs e)
+        {
+            stc_gpu.Children.Remove(ucontrolgpu);
+            stc_gpu.Children.Add(ucontrolgpu);
+        }
+
+        private void chc_gpu_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stc_gpu.Children.Remove(ucontrolgpu);
+        }
+
+        
     }
+
+
 }

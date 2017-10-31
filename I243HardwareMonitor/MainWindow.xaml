@@ -24,7 +24,10 @@
         </TabItem> 
 
         <TabItem Header="Preferences">
-            
+            <StackPanel Name="stc_preferences">
+                <CheckBox Name="chc_cpu" Content="Show CPU" Checked="chc_cpu_Checked" Unchecked="chc_cpu_Unchecked" IsChecked="False"/>
+                <CheckBox Name="chc_gpu" Content="Show GPU" IsChecked="False" Checked="chc_gpu_Checked" Unchecked="chc_gpu_Unchecked"></CheckBox>
+            </StackPanel>
         </TabItem>
 
     </TabControl>
