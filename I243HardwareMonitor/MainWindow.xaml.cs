@@ -25,87 +25,21 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-	    private HardwareInfo hardware = new HardwareInfo();
-        private DispatcherTimer timer = new DispatcherTimer();
-
+	   
         public MainWindow()
         {
 			InitializeComponent();
+            UserControlCPU ucontrolcpu = new UserControlCPU();
+            UserControlGPU ucontrolgpu = new UserControlGPU();
+            
+            stc_cpu.Children.Add(ucontrolcpu);
+            stc_gpu.Children.Add(ucontrolgpu);
+            
         }
-
-        private void btn_Start_Click(object sender, RoutedEventArgs e)
-        {
-            String selection = cmb_makedecision.Text;
-            if (selection == "")
-            {
-                MessageBox.Show("You have to choose something!");
-            }
-            else if (selection == "Store in textbox")
-            {
-                btn_clear.IsEnabled = true;
-                btn_Start.IsEnabled = false;
-                cmb_makedecision.Text = "";
-				String debugHardwareInfo = hardware.ToString();
-				txtbOutput.Text = debugHardwareInfo;
-				Debug.WriteLine(debugHardwareInfo);
-	            hardware.Update();
-			}
-            else if(selection== "Show in realtime")
-
-            {
-                btn_abort.IsEnabled = true;
-                btn_Start.IsEnabled = false;
-                cmb_makedecision.Text = "";
-                starttimer();
-            }
-            else
-            {
-                MessageBox.Show("That does not work yet");
-            }
-        }
-        public void timer_Tick(object sender, EventArgs e)
-        {
-            hardware.Update();
-            lbl_realtime.Content = hardware.ToString();
-        }
-
-        
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            btn_Start.IsEnabled = true;
-        }
-
-        private void btn_clear_Click(object sender, RoutedEventArgs e)
-        {
-            txtbOutput.Clear();
-            btn_clear.IsEnabled = false;
-        }
-
-        private void btn_exit1_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void btn_help_Click(object sender, RoutedEventArgs e)
+        private void btn_Help_Click(object sender, RoutedEventArgs e)
         {
             var helpwindow = new Help();
             helpwindow.Show();
-        }
-        
-        
-        public void starttimer()
-        {
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
-            timer.Start();
-        }
-
-        private void btn_abort_Click(object sender, RoutedEventArgs e)
-        {
-            timer.Stop();
-            lbl_realtime.Content = "";
-            btn_abort.IsEnabled = false;
-            btn_Start.IsEnabled = false;
         }
     }
 }

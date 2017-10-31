@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\jpent\Desktop\C#projekt\I243HardwareMonitor\I243HardwareMonitor\App.xaml
-2722849873
+41612542643
 
-15-1161702269
+17576160911
 14-1701774900
-Help.xaml;MainWindow.xaml;
+Help.xaml;MainWindow.xaml;UserControlCPU.xaml;UserControlGPU.xaml;
 
-True
+False
 

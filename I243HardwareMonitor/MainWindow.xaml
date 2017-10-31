@@ -7,43 +7,24 @@
         mc:Ignorable="d"
         Title="Hardware Monitor" Height="350" Width="525">
 
-    <TabControl>
+    
+        <TabControl>
         <TabItem Header="General">
-            <Grid Margin="0,-16,0,16">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="96*"/>
-                    <ColumnDefinition Width="415*"/>
-                </Grid.ColumnDefinitions>
-                <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="285,90,0,0" 
-                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" 
-                         ScrollViewer.HorizontalScrollBarVisibility="Auto" 
-                         ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                         ScrollViewer.CanContentScroll="True" RenderTransformOrigin="0.422,-0.203" Grid.Column="1"/>
-
-                <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="324,37,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click" IsEnabled="False" Grid.Column="1"/>
-                <ComboBox x:Name="cmb_makedecision" HorizontalAlignment="Left" Margin="279,10,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.048,0.339" SelectionChanged="comboBox_SelectionChanged" Grid.Column="1">
-                    <ComboBoxItem>Store in textbox</ComboBoxItem>
-                    <ComboBoxItem>Show in realtime</ComboBoxItem>
-                    <ComboBoxItem>Save in local database</ComboBoxItem>
-                    <ComboBoxItem>Save in remote database</ComboBoxItem>
-                </ComboBox>
-                <Button x:Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="330,227,0,0" VerticalAlignment="Top" Width="75" Click="btn_clear_Click" IsEnabled="False" Grid.Column="1"/>
-                <Button x:Name="btn_exit1" Content="Exit" HorizontalAlignment="Left" Margin="329.667,261,0,0" VerticalAlignment="Top" Width="75" Click="btn_exit1_Click" Grid.Column="1"/>
-                <Button x:Name="btn_help" Content="?" Grid.Column="1" HorizontalAlignment="Left" Margin="285,65,0,0" VerticalAlignment="Top" Width="28" Click="btn_help_Click" RenderTransformOrigin="-1.286,-0.6"/>
-                <Label x:Name="lbl_realtime" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="163,190,0,0" VerticalAlignment="Top" FontSize="9" RenderTransformOrigin="0.2,-1.364"/>
-                <Button x:Name="btn_abort" Content="Abort" Grid.Column="1" HorizontalAlignment="Left" Margin="324,65,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btn_abort_Click"/>
-                <ListBox x:Name="lsb_CPU" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="111" Margin="21,32,0,0" VerticalAlignment="Top" Width="322">
-                    <TextBlock x:Name="txb_CPU" Height="101" TextWrapping="Wrap" Text="" Width="312"/>
-
-                </ListBox>
-                <ListBox x:Name="lsb_GPU" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="111" Margin="21,159,0,0" VerticalAlignment="Top" Width="322">
-                    <TextBlock x:Name="txb_GPU" TextWrapping="Wrap" Text="" Height="101" Width="312"/>
-                </ListBox>
-
+            <Grid>
+                <Label Name="lbl_cpu" Content="CPU" Margin="1,55,0,0"/>
+                <Label Name="lbl_gpu" Content="GPU" Margin="1,160,0,0"/>
+                <Button Name="btn_Help" Content="?" Margin="476,2,0,261" Click="btn_Help_Click"/>
+                <StackPanel Name="stc_cpu" Margin="30,20,0,0"></StackPanel>
+                <StackPanel Name="stc_gpu" Margin="30,120,0,0"></StackPanel>
+                
             </Grid>
         </TabItem>
         <TabItem Header="Database">
+            
+        </TabItem> 
 
+        <TabItem Header="Preferences">
+            
         </TabItem>
 
     </TabControl>
