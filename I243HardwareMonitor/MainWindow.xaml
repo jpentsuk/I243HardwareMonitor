@@ -9,36 +9,43 @@
 
     <TabControl>
         <TabItem Header="General">
-            <Grid Margin="0,-3,0,3">
+            <Grid Margin="0,-16,0,16">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="96*"/>
                     <ColumnDefinition Width="415*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="10,159,0,0" 
-                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" 
+                <TextBox x:Name="txtbOutput" HorizontalAlignment="Left" Height="122" Margin="285,90,0,0" 
+                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" 
                          ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                          ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                         ScrollViewer.CanContentScroll="True" RenderTransformOrigin="0.422,-0.203"/>
+                         ScrollViewer.CanContentScroll="True" RenderTransformOrigin="0.422,-0.203" Grid.Column="1"/>
 
-                <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="323.667,30,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click" IsEnabled="False" Grid.Column="1"/>
-                <ComboBox x:Name="cmb_makedecision" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.048,0.339" SelectionChanged="comboBox_SelectionChanged" Grid.ColumnSpan="2">
+                <Button x:Name="btn_Start" Content="Monitor" HorizontalAlignment="Left" Margin="324,37,0,0" VerticalAlignment="Top" Width="75" Click="btn_Start_Click" IsEnabled="False" Grid.Column="1"/>
+                <ComboBox x:Name="cmb_makedecision" HorizontalAlignment="Left" Margin="279,10,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.048,0.339" SelectionChanged="comboBox_SelectionChanged" Grid.Column="1">
                     <ComboBoxItem>Store in textbox</ComboBoxItem>
                     <ComboBoxItem>Show in realtime</ComboBoxItem>
                     <ComboBoxItem>Save in local database</ComboBoxItem>
                     <ComboBoxItem>Save in remote database</ComboBoxItem>
                 </ComboBox>
-                <Button x:Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="47.667,261,0,0" VerticalAlignment="Top" Width="75" Click="btn_clear_Click" IsEnabled="False" Grid.Column="1"/>
+                <Button x:Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="330,227,0,0" VerticalAlignment="Top" Width="75" Click="btn_clear_Click" IsEnabled="False" Grid.Column="1"/>
                 <Button x:Name="btn_exit1" Content="Exit" HorizontalAlignment="Left" Margin="329.667,261,0,0" VerticalAlignment="Top" Width="75" Click="btn_exit1_Click" Grid.Column="1"/>
-                <Button x:Name="btn_help" Content="?" Grid.Column="1" HorizontalAlignment="Left" Margin="371,0,0,0" VerticalAlignment="Top" Width="28" Click="btn_help_Click"/>
-                <Label x:Name="lbl_realtime" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="138,2,0,0" VerticalAlignment="Top" FontSize="9"/>
-                <Button x:Name="btn_abort" Content="Abort" Grid.Column="1" HorizontalAlignment="Left" Margin="324,55,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btn_abort_Click"/>
+                <Button x:Name="btn_help" Content="?" Grid.Column="1" HorizontalAlignment="Left" Margin="285,65,0,0" VerticalAlignment="Top" Width="28" Click="btn_help_Click" RenderTransformOrigin="-1.286,-0.6"/>
+                <Label x:Name="lbl_realtime" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="163,190,0,0" VerticalAlignment="Top" FontSize="9" RenderTransformOrigin="0.2,-1.364"/>
+                <Button x:Name="btn_abort" Content="Abort" Grid.Column="1" HorizontalAlignment="Left" Margin="324,65,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btn_abort_Click"/>
+                <ListBox x:Name="lsb_CPU" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="111" Margin="21,32,0,0" VerticalAlignment="Top" Width="322">
+                    <TextBlock x:Name="txb_CPU" Height="101" TextWrapping="Wrap" Text="" Width="312"/>
+
+                </ListBox>
+                <ListBox x:Name="lsb_GPU" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="111" Margin="21,159,0,0" VerticalAlignment="Top" Width="322">
+                    <TextBlock x:Name="txb_GPU" TextWrapping="Wrap" Text="" Height="101" Width="312"/>
+                </ListBox>
 
             </Grid>
         </TabItem>
         <TabItem Header="Database">
-            
+
         </TabItem>
-        
+
     </TabControl>
 
 
