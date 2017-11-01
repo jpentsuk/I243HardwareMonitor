@@ -7,7 +7,13 @@
              mc:Ignorable="d" Height="100" Width="400">
     <Grid>
         <Border Name="brd_cpu" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="390">
-            <Label Name="lbl_cpuinfo" Content=""/>
+            <Grid>
+                <Label Name="lbl_cpusensor0" Margin="0,0,0,0" Content=""/>
+                <Label Name="lbl_cpusensor1" Margin="0,15,0,0" Content=""/>
+
+            </Grid>
+            
+         
         </Border>
         
     </Grid>

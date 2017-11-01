@@ -10,7 +10,7 @@ namespace I243HardwareMonitor
 	{
 		public String Identifier { get; }
 		private List<HardwareComponent> SubHardware { get; }
-		private List<HardwareSensor> Sensors { get; }
+		public List<HardwareSensor> Sensors { get; }
 		private int sensorCount, subHardwareCount;
 		public HardwareComponent(String name, String type, String identifier) : base(name, type)
 		{
