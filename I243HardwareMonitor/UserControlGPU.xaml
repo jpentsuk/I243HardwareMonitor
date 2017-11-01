@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:I243HardwareMonitor"
-             mc:Ignorable="d" Height="200" Width="400">
+             mc:Ignorable="d" Height="170" Width="400">
     <Grid>
-        <Border Name="brd_gpu" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Left" Height="190"  VerticalAlignment="Top" Width="390">
+        <Border Name="brd_gpu" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Left" Height="160"  VerticalAlignment="Top" Width="390">
             <Label Name="lbl_gpuinfo" Content=""/>
         </Border>
     </Grid>

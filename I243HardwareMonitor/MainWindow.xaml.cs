@@ -28,12 +28,14 @@ namespace I243HardwareMonitor
 
         UserControlCPU ucontrolcpu = new UserControlCPU();
         UserControlGPU ucontrolgpu = new UserControlGPU();
+        UserControlRAM ucontrolram = new UserControlRAM();
         
         public MainWindow()
         {
 			InitializeComponent();
             stc_cpu.Children.Add(ucontrolcpu);
             stc_gpu.Children.Add(ucontrolgpu);
+            stc_ram.Children.Add(ucontrolram);
 
         }
         private void btn_Help_Click(object sender, RoutedEventArgs e)

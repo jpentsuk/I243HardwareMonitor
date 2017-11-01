@@ -66,6 +66,9 @@
     <Compile Include="UserControlGPU.xaml.cs">
       <DependentUpon>UserControlGPU.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlRAM.xaml.cs">
+      <DependentUpon>UserControlRAM.xaml</DependentUpon>
+    </Compile>
     <Page Include="Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlGPU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlRAM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,17 +16,16 @@ using System.Windows.Shapes;
 namespace I243HardwareMonitor
 {
     /// <summary>
-    /// Interaction logic for UserControlGPU.xaml
+    /// Interaction logic for UserControlRAM.xaml
     /// </summary>
-    public partial class UserControlGPU : UserControl
+    public partial class UserControlRAM : UserControl
     {
         private HardwareInfo hardware = new HardwareInfo();
-        public UserControlGPU()
+
+        public UserControlRAM()
         {
             InitializeComponent();
-            String gpuname = hardware.CPUs[0].ToString();
-            lbl_gpuinfo.Content = gpuname;
-            hardware.Update();
-        }
+            lbl_ramsensors.Content = hardware.RAM.ToString();
+    }
     }
 }

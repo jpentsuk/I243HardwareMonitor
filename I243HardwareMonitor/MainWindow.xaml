@@ -11,11 +11,13 @@
         <TabControl>
         <TabItem Header="General">
             <Grid>
-                <Label Name="lbl_cpu" Content="CPU" Margin="1,131,0,-76"/>
-                <Label Name="lbl_gpu" Content="GPU" Margin="1,366,0,-206"/>
+                <Label Name="lbl_cpu" Content="CPU" Margin="1,100,0,0"/>
+                <Label Name="lbl_gpu" Content="GPU" Margin="1,250,0,0"/>
+                <Label Name="lbl_ram" Content="RAM" Margin="1,370,0,0"/>
                 <Button Name="btn_Help" Content="?" Margin="938,2,0,591" Click="btn_Help_Click"/>
                 <StackPanel Name="stc_cpu" Margin="30,20,0,0" HorizontalAlignment="Left"></StackPanel>
-                <StackPanel Name="stc_gpu" Margin="30,220,0,0" HorizontalAlignment="Left"></StackPanel>
+                <StackPanel Name="stc_gpu" Margin="30,190,0,0" HorizontalAlignment="Left"></StackPanel>
+                <StackPanel Name="stc_ram" Margin="30,360,0,0" HorizontalAlignment="Left"></StackPanel>
                 
             </Grid>
         </TabItem>

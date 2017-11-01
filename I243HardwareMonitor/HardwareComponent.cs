@@ -34,7 +34,7 @@ namespace I243HardwareMonitor
 			String combinedInfo;
 			sensorCount = Sensors.Count();
 			subHardwareCount = SubHardware.Count();
-			combinedInfo = Environment.NewLine + "HardwareComponent: " + this.Name + " - " + this.Type + " - " + this.Identifier + Environment.NewLine;
+			combinedInfo = "HardwareComponent: " + this.Name + " - " + this.Type + " - " + this.Identifier + Environment.NewLine;
 			if (sensorCount > 0)
 			{
 				for (int i = 0; i < sensorCount; i++)
