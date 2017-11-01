@@ -24,25 +24,20 @@ namespace I243HardwareMonitor
     {
         private HardwareInfo hardware = new HardwareInfo();
         private DispatcherTimer timer = new DispatcherTimer();
+        public List<String> cpu = new List<string>();
         
 
 
         public UserControlCPU()
         {
             InitializeComponent();
-            Debug.WriteLine(hardware.ToString());
             starttimer();
 
         }
         public void timer_Tick(object sender, EventArgs e)
         {
             hardware.Update();
-            lbl_cpusensor0.Content = hardware.CPUs[0].Sensors[0].Name +
-            " " + hardware.CPUs[0].Sensors[0].Type + " " +
-            hardware.CPUs[0].Sensors[0].Value; 
-            lbl_cpusensor1.Content = hardware.CPUs[0].Sensors[1].Name +
-            " " + hardware.CPUs[0].Sensors[1].Type + " " +
-            hardware.CPUs[0].Sensors[1].Value;
+            lbl_cpusensors.Content = hardware.CPUs[0].ToString();
         }
         public void starttimer()
         {
@@ -50,15 +45,11 @@ namespace I243HardwareMonitor
             timer.Tick += timer_Tick;
             timer.Start();
         }
-        
 
         
+            
+        }
 
-        
-
-        
-
-
-        
+              
     }
 }
