@@ -25,18 +25,19 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-
         UserControlCPU ucontrolcpu = new UserControlCPU();
         UserControlGPU ucontrolgpu = new UserControlGPU();
         UserControlRAM ucontrolram = new UserControlRAM();
+        UserControlHDD ucontrolhdd = new UserControlHDD();
         
+
         public MainWindow()
         {
 			InitializeComponent();
             stc_cpu.Children.Add(ucontrolcpu);
             stc_gpu.Children.Add(ucontrolgpu);
             stc_ram.Children.Add(ucontrolram);
-
+            stc_hdd.Children.Add(ucontrolhdd);
         }
         private void btn_Help_Click(object sender, RoutedEventArgs e)
         {
@@ -66,7 +67,27 @@ namespace I243HardwareMonitor
             stc_gpu.Children.Remove(ucontrolgpu);
         }
 
-        
+        private void chc_ram_Checked(object sender, RoutedEventArgs e)
+        {
+            stc_ram.Children.Remove(ucontrolram);
+            stc_ram.Children.Add(ucontrolram);
+        }
+
+        private void chc_ram_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stc_ram.Children.Remove(ucontrolram);
+        }
+
+        private void chc_hdd_Checked(object sender, RoutedEventArgs e)
+        {
+            stc_hdd.Children.Remove(ucontrolhdd);
+            stc_hdd.Children.Add(ucontrolhdd);
+        }
+
+        private void chc_hdd_Unchecked(object sender, RoutedEventArgs e)
+        {
+            stc_hdd.Children.Remove(ucontrolhdd);
+        }
     }
 
 

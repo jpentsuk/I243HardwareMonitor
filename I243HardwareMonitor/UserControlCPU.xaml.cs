@@ -24,10 +24,7 @@ namespace I243HardwareMonitor
     {
         private HardwareInfo hardware = new HardwareInfo();
         private DispatcherTimer timer = new DispatcherTimer();
-        public List<String> cpu = new List<string>();
         
-
-
         public UserControlCPU()
         {
             InitializeComponent();

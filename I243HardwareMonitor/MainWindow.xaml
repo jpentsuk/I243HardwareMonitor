@@ -5,19 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:I243HardwareMonitor"
         mc:Ignorable="d"
-        Title="Hardware Monitor" Height="700" Width="1000">
+        Title="Hardware Monitor" Height="470" Width="1000">
 
     
         <TabControl>
         <TabItem Header="General">
             <Grid>
                 <Label Name="lbl_cpu" Content="CPU" Margin="1,100,0,0"/>
-                <Label Name="lbl_gpu" Content="GPU" Margin="1,250,0,0"/>
-                <Label Name="lbl_ram" Content="RAM" Margin="1,370,0,0"/>
-                <Button Name="btn_Help" Content="?" Margin="938,2,0,591" Click="btn_Help_Click"/>
+                <Label Name="lbl_gpu" Content="GPU" Margin="429,100,-428,150"/>
+                <Label Name="lbl_ram" Content="RAM" Margin="0,224,1,165"/>
+                <Label Name="lbl_hdd" Content="HDD" Margin="429,224,-428,165"/>
+                <Button Name="btn_Help" Content="?" Margin="937,10,1,365" Click="btn_Help_Click"/>
                 <StackPanel Name="stc_cpu" Margin="30,20,0,0" HorizontalAlignment="Left"></StackPanel>
-                <StackPanel Name="stc_gpu" Margin="30,190,0,0" HorizontalAlignment="Left"></StackPanel>
-                <StackPanel Name="stc_ram" Margin="30,360,0,0" HorizontalAlignment="Left"></StackPanel>
+                <StackPanel Name="stc_gpu" Margin="470,20,0,0" HorizontalAlignment="Left"></StackPanel>
+                <StackPanel Name="stc_ram" Margin="30,200,0,0" HorizontalAlignment="Left"></StackPanel>
+                <StackPanel Name="stc_hdd" Margin="470,200,0,0" HorizontalAlignment="Left"></StackPanel>
+                
                 
             </Grid>
         </TabItem>
@@ -29,6 +32,8 @@
             <StackPanel Name="stc_preferences">
                 <CheckBox Name="chc_cpu" Content="Show CPU" Checked="chc_cpu_Checked" Unchecked="chc_cpu_Unchecked" IsChecked="False"/>
                 <CheckBox Name="chc_gpu" Content="Show GPU" IsChecked="False" Checked="chc_gpu_Checked" Unchecked="chc_gpu_Unchecked"></CheckBox>
+                <CheckBox Name="chc_ram" Content="Show RAM" IsChecked="False" Checked="chc_ram_Checked" Unchecked="chc_ram_Unchecked"></CheckBox>
+                <CheckBox Name="chc_hdd" Content="Show HDD" IsChecked="false" Checked="chc_hdd_Checked" Unchecked="chc_hdd_Unchecked"></CheckBox>
             </StackPanel>
         </TabItem>
 

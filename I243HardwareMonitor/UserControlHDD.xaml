@@ -1,13 +1,14 @@
-﻿<UserControl x:Class="I243HardwareMonitor.UserControlGPU"
+﻿<UserControl x:Class="I243HardwareMonitor.UserControlHDD"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:I243HardwareMonitor"
-             mc:Ignorable="d" Height="170" Width="400">
+             mc:Ignorable="d" 
+             d:DesignHeight="170" d:DesignWidth="400">
     <Grid>
-        <Border Name="brd_gpu" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Left" Height="160"  VerticalAlignment="Top" Width="390">
-            <Label Name="lbl_gpusensors" Content=""/>
+        <Border Name="brd_hdd" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Left" Height="160"  VerticalAlignment="Top" Width="390">
+            <Label Name="lbl_hddsensors" Content=""/>
         </Border>
     </Grid>
 </UserControl>

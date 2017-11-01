@@ -13,29 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Diagnostics;
-
 
 namespace I243HardwareMonitor
 {
     /// <summary>
-    /// Interaction logic for UserControlRAM.xaml
+    /// Interaction logic for UserControlHDD.xaml
     /// </summary>
-    public partial class UserControlRAM : UserControl
+    public partial class UserControlHDD : UserControl
     {
         private DispatcherTimer timer = new DispatcherTimer();
         private HardwareInfo hardware = new HardwareInfo();
-
-        public UserControlRAM()
+        public UserControlHDD()
         {
             InitializeComponent();
             starttimer();
-            
         }
         public void timer_Tick(object sender, EventArgs e)
         {
             hardware.Update();
-            lbl_ramsensors.Content = hardware.RAM.ToString();
+            lbl_hddsensors.Content = hardware.HDDs[0].ToString();
         }
         public void starttimer()
         {
@@ -43,7 +39,5 @@ namespace I243HardwareMonitor
             timer.Tick += timer_Tick;
             timer.Start();
         }
-
-
     }
 }

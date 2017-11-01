@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace I243HardwareMonitor
 {
@@ -21,12 +22,22 @@ namespace I243HardwareMonitor
     public partial class UserControlGPU : UserControl
     {
         private HardwareInfo hardware = new HardwareInfo();
+        private DispatcherTimer timer = new DispatcherTimer();
         public UserControlGPU()
         {
             InitializeComponent();
-            String gpuname = hardware.CPUs[0].ToString();
-            lbl_gpuinfo.Content = gpuname;
+            starttimer();
+        }
+        public void timer_Tick(object sender, EventArgs e)
+        {
             hardware.Update();
+            lbl_gpusensors.Content = hardware.CPUs[0].ToString();
+        }
+        public void starttimer()
+        {
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
     }
 }
