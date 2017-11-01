@@ -51,5 +51,5 @@ namespace I243HardwareMonitor
         }
 
               
-    }
+   
 }
