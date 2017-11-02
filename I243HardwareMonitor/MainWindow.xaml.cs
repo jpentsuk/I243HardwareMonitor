@@ -29,7 +29,7 @@ namespace I243HardwareMonitor
 		private DispatcherTimer timer;
 		private UserControlMainView userControlCpu;
 		private UserControlMainView userControlGpu;
-		private UserControlMainView UserControlRam;
+		private UserControlMainView userControlRam;
 		private UserControlMainView userControlHdd;
 
 		public MainWindow()
@@ -38,9 +38,13 @@ namespace I243HardwareMonitor
 			this.timer = new DispatcherTimer();
 			this.userControlCpu = new UserControlMainView(hardware, ViewType.CPU);
 			this.userControlGpu = new UserControlMainView(hardware, ViewType.GPU);
-			this.UserControlRam = new UserControlMainView(hardware, ViewType.RAM);
+			this.userControlRam = new UserControlMainView(hardware, ViewType.RAM);
 			this.userControlHdd = new UserControlMainView(hardware, ViewType.HDD);
 			InitializeComponent();
+			stc_cpu.Children.Add(userControlCpu);
+			stc_gpu.Children.Add(userControlGpu);
+			stc_hdd.Children.Add(userControlHdd);
+			stc_ram.Children.Add(userControlRam);
 			StartTimer();
 		}
 
@@ -56,54 +60,55 @@ namespace I243HardwareMonitor
 			hardware.Update();
 			userControlCpu.UpdateLabelInfo();
 			userControlGpu.UpdateLabelInfo();
-			UserControlRam.UpdateLabelInfo();
+			userControlRam.UpdateLabelInfo();
 			userControlHdd.UpdateLabelInfo();
+		}
+
+		private void chc_viewToggle_Changed(object sender, RoutedEventArgs e)
+		{
+			bool? cpuChecked = chc_cpu.IsChecked;
+			bool? gpuChecked = chc_gpu.IsChecked;
+			bool? ramChecked = chc_ram.IsChecked;
+			bool? hddChecked = chc_hdd.IsChecked;
+
+			if (cpuChecked == true)
+			{
+				stc_cpu.Children[0].Visibility = Visibility.Visible;
+			}
+			else
+			{
+				stc_cpu.Children[0].Visibility = Visibility.Hidden;
+			}
+			if (gpuChecked == true)
+			{
+				stc_gpu.Children[0].Visibility = Visibility.Visible;
+			}
+			else
+			{
+				stc_gpu.Children[0].Visibility = Visibility.Hidden;
+			}
+			if (ramChecked == true)
+			{
+				stc_ram.Children[0].Visibility = Visibility.Visible;
+			}
+			else
+			{
+				stc_ram.Children[0].Visibility = Visibility.Hidden;
+			}
+			if (hddChecked == true)
+			{
+				stc_hdd.Children[0].Visibility = Visibility.Visible;
+			}
+			else
+			{
+				stc_hdd.Children[0].Visibility = Visibility.Hidden;
+			}
 		}
 
 		private void btn_Help_Click(object sender, RoutedEventArgs e)
 		{
 			var helpwindow = new Help();
 			helpwindow.Show();
-		}
-
-		public void chc_cpu_Checked(object sender, RoutedEventArgs e)
-		{
-			stc_cpu.Children.Add(userControlCpu);
-		}
-
-		private void chc_cpu_Unchecked(object sender, RoutedEventArgs e)
-		{
-			stc_cpu.Children.Remove(userControlCpu);
-		}
-
-		private void chc_gpu_Checked(object sender, RoutedEventArgs e)
-		{
-			stc_gpu.Children.Add(userControlGpu);
-		}
-
-		private void chc_gpu_Unchecked(object sender, RoutedEventArgs e)
-		{
-			stc_gpu.Children.Remove(userControlGpu);
-		}
-
-		private void chc_ram_Checked(object sender, RoutedEventArgs e)
-		{
-			stc_ram.Children.Add(UserControlRam);
-		}
-
-		private void chc_ram_Unchecked(object sender, RoutedEventArgs e)
-		{
-			stc_ram.Children.Remove(UserControlRam);
-		}
-
-		private void chc_hdd_Checked(object sender, RoutedEventArgs e)
-		{
-			stc_hdd.Children.Add(userControlHdd);
-		}
-
-		private void chc_hdd_Unchecked(object sender, RoutedEventArgs e)
-		{
-			stc_hdd.Children.Remove(userControlHdd);
 		}
 	}
 }
