@@ -36,19 +36,19 @@ namespace I243HardwareMonitor
 				case ViewType.CPU:
 					foreach (HardwareComponent cpu in hardware.CPUs)
 					{
-						labelInfo += cpu.ToString() + Environment.NewLine;
+						labelInfo += cpu + Environment.NewLine;
 					}
 					break;
 				case ViewType.GPU:
 					foreach (HardwareComponent gpu in hardware.GPUs)
 					{
-						labelInfo += gpu.ToString() + Environment.NewLine;
+						labelInfo += gpu + Environment.NewLine;
 					}
 					break;
 				case ViewType.HDD:
 					foreach (HardwareComponent hdd in hardware.HDDs)
 					{
-						labelInfo += hdd.ToString() + Environment.NewLine;
+						labelInfo += hdd + Environment.NewLine;
 					};
 					break;
 				case ViewType.RAM:
