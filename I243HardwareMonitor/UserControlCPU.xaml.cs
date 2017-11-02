@@ -29,7 +29,6 @@ namespace I243HardwareMonitor
         {
             InitializeComponent();
             starttimer();
-
         }
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -41,12 +40,6 @@ namespace I243HardwareMonitor
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
-        }
-
-        
-            
-        }
-
-              
-   
+        }   
+    }
 }

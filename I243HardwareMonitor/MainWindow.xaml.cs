@@ -30,7 +30,6 @@ namespace I243HardwareMonitor
         UserControlRAM ucontrolram = new UserControlRAM();
         UserControlHDD ucontrolhdd = new UserControlHDD();
         
-
         public MainWindow()
         {
 			InitializeComponent();
@@ -85,6 +84,4 @@ namespace I243HardwareMonitor
             stc_hdd.Children.Remove(ucontrolhdd);
         }
     }
-
-
 }
