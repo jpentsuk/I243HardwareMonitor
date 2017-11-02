@@ -25,13 +25,17 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-        UserControlCPU ucontrolcpu = new UserControlCPU();
-        UserControlGPU ucontrolgpu = new UserControlGPU();
-        UserControlRAM ucontrolram = new UserControlRAM();
-        UserControlHDD ucontrolhdd = new UserControlHDD();
+        UserControlCPU ucontrolcpu;
+        UserControlGPU ucontrolgpu;
+        UserControlRAM ucontrolram;
+        UserControlHDD ucontrolhdd;
         
         public MainWindow()
         {
+	        this.ucontrolcpu = new UserControlCPU();
+	        this.ucontrolgpu = new UserControlGPU();
+	        this.ucontrolram = new UserControlRAM();
+	        this.ucontrolhdd = new UserControlHDD();
 			InitializeComponent();
         }
         private void btn_Help_Click(object sender, RoutedEventArgs e)
@@ -42,7 +46,6 @@ namespace I243HardwareMonitor
 
         public void chc_cpu_Checked(object sender, RoutedEventArgs e)
         {
-            stc_cpu.Children.Remove(ucontrolcpu);
             stc_cpu.Children.Add(ucontrolcpu);
         }
 
@@ -53,7 +56,6 @@ namespace I243HardwareMonitor
 
         private void chc_gpu_Checked(object sender, RoutedEventArgs e)
         {
-            stc_gpu.Children.Remove(ucontrolgpu);
             stc_gpu.Children.Add(ucontrolgpu);
         }
 
@@ -64,7 +66,6 @@ namespace I243HardwareMonitor
 
         private void chc_ram_Checked(object sender, RoutedEventArgs e)
         {
-            stc_ram.Children.Remove(ucontrolram);
             stc_ram.Children.Add(ucontrolram);
         }
 
@@ -75,7 +76,6 @@ namespace I243HardwareMonitor
 
         private void chc_hdd_Checked(object sender, RoutedEventArgs e)
         {
-            stc_hdd.Children.Remove(ucontrolhdd);
             stc_hdd.Children.Add(ucontrolhdd);
         }
 
