@@ -71,38 +71,10 @@ namespace I243HardwareMonitor
 			bool? ramChecked = chc_ram.IsChecked;
 			bool? hddChecked = chc_hdd.IsChecked;
 
-			if (cpuChecked == true)
-			{
-				stc_cpu.Children[0].Visibility = Visibility.Visible;
-			}
-			else
-			{
-				stc_cpu.Children[0].Visibility = Visibility.Hidden;
-			}
-			if (gpuChecked == true)
-			{
-				stc_gpu.Children[0].Visibility = Visibility.Visible;
-			}
-			else
-			{
-				stc_gpu.Children[0].Visibility = Visibility.Hidden;
-			}
-			if (ramChecked == true)
-			{
-				stc_ram.Children[0].Visibility = Visibility.Visible;
-			}
-			else
-			{
-				stc_ram.Children[0].Visibility = Visibility.Hidden;
-			}
-			if (hddChecked == true)
-			{
-				stc_hdd.Children[0].Visibility = Visibility.Visible;
-			}
-			else
-			{
-				stc_hdd.Children[0].Visibility = Visibility.Hidden;
-			}
+			stc_cpu.Children[0].Visibility = (bool)cpuChecked ? Visibility.Visible : Visibility.Hidden;
+			stc_gpu.Children[0].Visibility = (bool)gpuChecked ? Visibility.Visible : Visibility.Hidden;
+			stc_ram.Children[0].Visibility = (bool)ramChecked ? Visibility.Visible : Visibility.Hidden;
+			stc_hdd.Children[0].Visibility = (bool)hddChecked ? Visibility.Visible : Visibility.Hidden;
 		}
 
 		private void btn_Help_Click(object sender, RoutedEventArgs e)
