@@ -28,10 +28,10 @@
 
 		<TabItem Header="Preferences">
 			<StackPanel Name="stc_preferences">
-				<CheckBox Name="chc_cpu" Content="Show CPU" Checked="chc_cpu_Checked" Unchecked="chc_cpu_Unchecked" IsChecked="True"/>
-				<CheckBox Name="chc_gpu" Content="Show GPU" IsChecked="True" Checked="chc_gpu_Checked" Unchecked="chc_gpu_Unchecked"></CheckBox>
-				<CheckBox Name="chc_ram" Content="Show RAM" IsChecked="True" Checked="chc_ram_Checked" Unchecked="chc_ram_Unchecked"></CheckBox>
-				<CheckBox Name="chc_hdd" Content="Show HDD" IsChecked="True" Checked="chc_hdd_Checked" Unchecked="chc_hdd_Unchecked"></CheckBox>
+				<CheckBox Name="chc_cpu" Content="Show CPU" IsChecked="True" Click="chc_viewToggle_Changed"/>
+				<CheckBox Name="chc_gpu" Content="Show GPU" IsChecked="True" Click="chc_viewToggle_Changed"/>
+				<CheckBox Name="chc_ram" Content="Show RAM" IsChecked="True" Click="chc_viewToggle_Changed"/>
+				<CheckBox Name="chc_hdd" Content="Show HDD" IsChecked="True" Click="chc_viewToggle_Changed"/>
 			</StackPanel>
 		</TabItem>
 	</TabControl>
