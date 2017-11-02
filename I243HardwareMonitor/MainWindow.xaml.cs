@@ -20,68 +20,90 @@ using System.Windows.Threading;
 
 namespace I243HardwareMonitor
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        UserControlCPU userControlCpu;
-        UserControlGPU userControlGpu;
-        UserControlRAM UserControlRam;
-        UserControlHDD userControlHdd;
-        
-        public MainWindow()
-        {
-	        this.userControlCpu = new UserControlCPU();
-	        this.userControlGpu = new UserControlGPU();
-	        this.UserControlRam = new UserControlRAM();
-	        this.userControlHdd = new UserControlHDD();
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		private HardwareInfo hardware;
+		private DispatcherTimer timer;
+		private UserControlMainView userControlCpu;
+		private UserControlMainView userControlGpu;
+		private UserControlMainView UserControlRam;
+		private UserControlMainView userControlHdd;
+
+		public MainWindow()
+		{
+			this.hardware = new HardwareInfo();
+			this.timer = new DispatcherTimer();
+			this.userControlCpu = new UserControlMainView(hardware, ViewType.CPU);
+			this.userControlGpu = new UserControlMainView(hardware, ViewType.GPU);
+			this.UserControlRam = new UserControlMainView(hardware, ViewType.RAM);
+			this.userControlHdd = new UserControlMainView(hardware, ViewType.HDD);
 			InitializeComponent();
-        }
-        private void btn_Help_Click(object sender, RoutedEventArgs e)
-        {
-            var helpwindow = new Help();
-            helpwindow.Show();
-        }
+			StartTimer();
+		}
 
-        public void chc_cpu_Checked(object sender, RoutedEventArgs e)
-        {
-            stc_cpu.Children.Add(userControlCpu);
-        }
+		private void StartTimer()
+		{
+			timer.Interval = TimeSpan.FromSeconds(1);
+			timer.Tick += UpdateInfoOnMainViewComponents;
+			timer.Start();
+		}
 
-        private void chc_cpu_Unchecked(object sender, RoutedEventArgs e)
-        {
-            stc_cpu.Children.Remove(userControlCpu);
-        }
+		private void UpdateInfoOnMainViewComponents(object sender, EventArgs e)
+		{
+			hardware.Update();
+			userControlCpu.UpdateLabelInfo();
+			userControlGpu.UpdateLabelInfo();
+			UserControlRam.UpdateLabelInfo();
+			userControlHdd.UpdateLabelInfo();
+		}
 
-        private void chc_gpu_Checked(object sender, RoutedEventArgs e)
-        {
-            stc_gpu.Children.Add(userControlGpu);
-        }
+		private void btn_Help_Click(object sender, RoutedEventArgs e)
+		{
+			var helpwindow = new Help();
+			helpwindow.Show();
+		}
 
-        private void chc_gpu_Unchecked(object sender, RoutedEventArgs e)
-        {
-            stc_gpu.Children.Remove(userControlGpu);
-        }
+		public void chc_cpu_Checked(object sender, RoutedEventArgs e)
+		{
+			stc_cpu.Children.Add(userControlCpu);
+		}
 
-        private void chc_ram_Checked(object sender, RoutedEventArgs e)
-        {
-            stc_ram.Children.Add(UserControlRam);
-        }
+		private void chc_cpu_Unchecked(object sender, RoutedEventArgs e)
+		{
+			stc_cpu.Children.Remove(userControlCpu);
+		}
 
-        private void chc_ram_Unchecked(object sender, RoutedEventArgs e)
-        {
-            stc_ram.Children.Remove(UserControlRam);
-        }
+		private void chc_gpu_Checked(object sender, RoutedEventArgs e)
+		{
+			stc_gpu.Children.Add(userControlGpu);
+		}
 
-        private void chc_hdd_Checked(object sender, RoutedEventArgs e)
-        {
-            stc_hdd.Children.Add(userControlHdd);
-        }
+		private void chc_gpu_Unchecked(object sender, RoutedEventArgs e)
+		{
+			stc_gpu.Children.Remove(userControlGpu);
+		}
 
-        private void chc_hdd_Unchecked(object sender, RoutedEventArgs e)
-        {
-            stc_hdd.Children.Remove(userControlHdd);
-        }
-    }
+		private void chc_ram_Checked(object sender, RoutedEventArgs e)
+		{
+			stc_ram.Children.Add(UserControlRam);
+		}
+
+		private void chc_ram_Unchecked(object sender, RoutedEventArgs e)
+		{
+			stc_ram.Children.Remove(UserControlRam);
+		}
+
+		private void chc_hdd_Checked(object sender, RoutedEventArgs e)
+		{
+			stc_hdd.Children.Add(userControlHdd);
+		}
+
+		private void chc_hdd_Unchecked(object sender, RoutedEventArgs e)
+		{
+			stc_hdd.Children.Remove(userControlHdd);
+		}
+	}
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jpent\Desktop\C#projekt\I243HardwareMonitor\I243HardwareMonitor\obj\Debug\
+C:\z\I243HardwareMonitor\I243HardwareMonitor\obj\Debug\
 I243HardwareMonitor
 none
 false
 DEBUG;TRACE
-C:\Users\jpent\Desktop\C#projekt\I243HardwareMonitor\I243HardwareMonitor\App.xaml
-6-838985382
+C:\z\I243HardwareMonitor\I243HardwareMonitor\App.xaml
+3-82214948
 
-19215531966
-14-1701774900
-Help.xaml;MainWindow.xaml;UserControlCPU.xaml;UserControlGPU.xaml;UserControlHDD.xaml;UserControlRAM.xaml;
+17404630938
+141918122250
+Help.xaml;MainWindow.xaml;UserControlMainView.xaml;
 
 False
 

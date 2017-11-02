@@ -60,18 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControlCPU.xaml.cs">
-      <DependentUpon>UserControlCPU.xaml</DependentUpon>
+    <Compile Include="UserControlMainView.xaml.cs">
+      <DependentUpon>UserControlMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlGPU.xaml.cs">
-      <DependentUpon>UserControlGPU.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlHDD.xaml.cs">
-      <DependentUpon>UserControlHDD.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlRAM.xaml.cs">
-      <DependentUpon>UserControlRAM.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewType.cs" />
     <Page Include="Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,19 +88,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControlCPU.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControlGPU.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControlHDD.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControlRAM.xaml">
+    <Page Include="UserControlMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
