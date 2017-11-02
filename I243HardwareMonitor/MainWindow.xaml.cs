@@ -34,10 +34,6 @@ namespace I243HardwareMonitor
         public MainWindow()
         {
 			InitializeComponent();
-            stc_cpu.Children.Add(ucontrolcpu);
-            stc_gpu.Children.Add(ucontrolgpu);
-            stc_ram.Children.Add(ucontrolram);
-            stc_hdd.Children.Add(ucontrolhdd);
         }
         private void btn_Help_Click(object sender, RoutedEventArgs e)
         {
