@@ -25,17 +25,17 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class MainWindow : Window
     {
-        UserControlCPU ucontrolcpu;
-        UserControlGPU ucontrolgpu;
-        UserControlRAM ucontrolram;
-        UserControlHDD ucontrolhdd;
+        UserControlCPU userControlCpu;
+        UserControlGPU userControlGpu;
+        UserControlRAM UserControlRam;
+        UserControlHDD userControlHdd;
         
         public MainWindow()
         {
-	        this.ucontrolcpu = new UserControlCPU();
-	        this.ucontrolgpu = new UserControlGPU();
-	        this.ucontrolram = new UserControlRAM();
-	        this.ucontrolhdd = new UserControlHDD();
+	        this.userControlCpu = new UserControlCPU();
+	        this.userControlGpu = new UserControlGPU();
+	        this.UserControlRam = new UserControlRAM();
+	        this.userControlHdd = new UserControlHDD();
 			InitializeComponent();
         }
         private void btn_Help_Click(object sender, RoutedEventArgs e)
@@ -46,42 +46,42 @@ namespace I243HardwareMonitor
 
         public void chc_cpu_Checked(object sender, RoutedEventArgs e)
         {
-            stc_cpu.Children.Add(ucontrolcpu);
+            stc_cpu.Children.Add(userControlCpu);
         }
 
         private void chc_cpu_Unchecked(object sender, RoutedEventArgs e)
         {
-            stc_cpu.Children.Remove(ucontrolcpu);
+            stc_cpu.Children.Remove(userControlCpu);
         }
 
         private void chc_gpu_Checked(object sender, RoutedEventArgs e)
         {
-            stc_gpu.Children.Add(ucontrolgpu);
+            stc_gpu.Children.Add(userControlGpu);
         }
 
         private void chc_gpu_Unchecked(object sender, RoutedEventArgs e)
         {
-            stc_gpu.Children.Remove(ucontrolgpu);
+            stc_gpu.Children.Remove(userControlGpu);
         }
 
         private void chc_ram_Checked(object sender, RoutedEventArgs e)
         {
-            stc_ram.Children.Add(ucontrolram);
+            stc_ram.Children.Add(UserControlRam);
         }
 
         private void chc_ram_Unchecked(object sender, RoutedEventArgs e)
         {
-            stc_ram.Children.Remove(ucontrolram);
+            stc_ram.Children.Remove(UserControlRam);
         }
 
         private void chc_hdd_Checked(object sender, RoutedEventArgs e)
         {
-            stc_hdd.Children.Add(ucontrolhdd);
+            stc_hdd.Children.Add(userControlHdd);
         }
 
         private void chc_hdd_Unchecked(object sender, RoutedEventArgs e)
         {
-            stc_hdd.Children.Remove(ucontrolhdd);
+            stc_hdd.Children.Remove(userControlHdd);
         }
     }
 }

@@ -28,14 +28,14 @@ namespace I243HardwareMonitor
         public UserControlCPU()
         {
             InitializeComponent();
-            starttimer();
+            startTimer();
         }
         public void timer_Tick(object sender, EventArgs e)
         {
             hardware.Update();
             lbl_cpusensors.Content = hardware.CPUs[0].ToString();
         }
-        public void starttimer()
+        public void startTimer()
         {
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
