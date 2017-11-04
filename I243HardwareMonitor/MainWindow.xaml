@@ -9,17 +9,12 @@
 
     <TabControl>
         <TabItem Header="General">
-            <Grid>
-                <Label Name="lbl_cpu" Content="CPU" Margin="1,100,0,0"/>
-                <Label Name="lbl_gpu" Content="GPU" Margin="429,100,-428,150"/>
-                <Label Name="lbl_ram" Content="RAM" Margin="0,224,1,150"/>
-                <Label Name="lbl_hdd" Content="HDD" Margin="429,224,-428,150"/>
-                <Button Name="btn_Help" Content="?" Margin="937,10,1,365" Click="btn_Help_Click"/>
-                <StackPanel Name="stc_cpu" Margin="30,20,0,0" HorizontalAlignment="Left"></StackPanel>
-                <StackPanel Name="stc_gpu" Margin="470,20,0,0" HorizontalAlignment="Left"></StackPanel>
-                <StackPanel Name="stc_ram" Margin="30,200,0,0" HorizontalAlignment="Left"></StackPanel>
-                <StackPanel Name="stc_hdd" Margin="470,200,0,0" HorizontalAlignment="Left"></StackPanel>
-            </Grid>
+			<Grid>
+				<Button Name="btn_Help" Content="?" Margin="937,10,1,365" Click="btn_Help_Click"/>
+				<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+					<StackPanel Name="mainViewStackPanel" Orientation="Vertical"></StackPanel>
+				</ScrollViewer>
+			</Grid>
         </TabItem>
         <TabItem Header="Database">
 
