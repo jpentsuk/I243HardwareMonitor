@@ -135,10 +135,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\TrayIcon2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\TrayIcon.ico" />
+    <Resource Include="Resources\fan.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

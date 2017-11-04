@@ -9,6 +9,6 @@
         Title="TrayView" Height="300" Width="300">
 
     <Grid>
-        <tb:TaskbarIcon IconSource="Resources/TrayIcon2.png" ToolTipText="Hello!"/>
+        <tb:TaskbarIcon IconSource="Resources/fan.ico" ToolTipText="Hello!"/>
     </Grid>
 </Window>
