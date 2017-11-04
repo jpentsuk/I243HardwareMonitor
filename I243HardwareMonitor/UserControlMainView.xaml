@@ -7,8 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="170" d:DesignWidth="400">
 	<Grid>
-		<Border Name="brd_main_view" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Left" Height="160"  VerticalAlignment="Top" Width="390">
+		
+		<Border Name="brd_main_view" BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Left" Height="150"  VerticalAlignment="Stretch" Width="390">
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 			<Label Name="lbl_main_view_info" Content=""/>
+			</ScrollViewer>
 		</Border>
+		
 	</Grid>
 </UserControl>
