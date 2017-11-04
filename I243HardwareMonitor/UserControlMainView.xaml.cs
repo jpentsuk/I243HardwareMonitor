@@ -22,38 +22,50 @@ namespace I243HardwareMonitor
 	{
 		private HardwareInfo hardware;
 		public ViewType type { get; }
+		private List<HardwareComponent> components;
 		public UserControlMainView(HardwareInfo hardware, ViewType type)
 		{
+			this.components = new List<HardwareComponent>();
 			this.type = type;
 			this.hardware = hardware;
+			setComponent();
 			InitializeComponent();
+			componentName.Text = type + ": " + components[0].Name;
 		}
-		public void UpdateLabelInfo()
+
+		public void setComponent()
 		{
-			String labelInfo = String.Empty;
 			switch (type)
 			{
 				case ViewType.CPU:
 					foreach (HardwareComponent cpu in hardware.CPUs)
 					{
-						labelInfo += cpu + Environment.NewLine;
+						components.Add(cpu);
 					}
 					break;
 				case ViewType.GPU:
 					foreach (HardwareComponent gpu in hardware.GPUs)
 					{
-						labelInfo += gpu + Environment.NewLine;
+						components.Add(gpu);
 					}
 					break;
 				case ViewType.HDD:
 					foreach (HardwareComponent hdd in hardware.HDDs)
 					{
-						labelInfo += hdd + Environment.NewLine;
+						components.Add(hdd);
 					};
 					break;
 				case ViewType.RAM:
-					labelInfo = hardware.RAM.ToString();
+					components.Add(hardware.RAM);
 					break;
+			}
+		}
+		public void UpdateLabelInfo()
+		{
+			String labelInfo = String.Empty;	
+			foreach (HardwareComponent component in components)
+			{
+				labelInfo += component + Environment.NewLine;
 			}
 			lbl_main_view_info.Content = labelInfo;
 		}
