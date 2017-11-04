@@ -21,7 +21,7 @@ namespace I243HardwareMonitor
 	public partial class UserControlMainView : UserControl
 	{
 		private HardwareInfo hardware;
-		private ViewType type;
+		public ViewType type { get; }
 		public UserControlMainView(HardwareInfo hardware, ViewType type)
 		{
 			this.type = type;
