@@ -27,25 +27,26 @@ namespace I243HardwareMonitor
 	{
 		private HardwareInfo hardware;
 		private DispatcherTimer timer;
-		private UserControlMainView userControlCpu;
-		private UserControlMainView userControlGpu;
-		private UserControlMainView userControlRam;
-		private UserControlMainView userControlHdd;
+		private List<UserControlMainView> userControls;
 
 		public MainWindow()
 		{
 			this.hardware = new HardwareInfo();
+			this.userControls = new List<UserControlMainView>();
 			this.timer = new DispatcherTimer();
-			this.userControlCpu = new UserControlMainView(hardware, ViewType.CPU);
-			this.userControlGpu = new UserControlMainView(hardware, ViewType.GPU);
-			this.userControlRam = new UserControlMainView(hardware, ViewType.RAM);
-			this.userControlHdd = new UserControlMainView(hardware, ViewType.HDD);
 			InitializeComponent();
-			stc_cpu.Children.Add(userControlCpu);
-			stc_gpu.Children.Add(userControlGpu);
-			stc_hdd.Children.Add(userControlHdd);
-			stc_ram.Children.Add(userControlRam);
+			createMainUserControls();
 			StartTimer();
+		}
+
+		private void createMainUserControls()
+		{
+			foreach (ViewType type in Enum.GetValues(typeof(ViewType)))
+			{
+				UserControlMainView control = new UserControlMainView(hardware, type);
+				userControls.Add(control);
+				mainViewStackPanel.Children.Add(control);
+			}
 		}
 
 		private void StartTimer()
@@ -58,23 +59,47 @@ namespace I243HardwareMonitor
 		private void UpdateInfoOnMainViewComponents(object sender, EventArgs e)
 		{
 			hardware.Update();
-			userControlCpu.UpdateLabelInfo();
-			userControlGpu.UpdateLabelInfo();
-			userControlRam.UpdateLabelInfo();
-			userControlHdd.UpdateLabelInfo();
+			foreach (UserControlMainView control in userControls)
+			{
+				control.UpdateLabelInfo();
+			}
 		}
 
 		private void chc_viewToggle_Changed(object sender, RoutedEventArgs e)
 		{
-			bool? cpuChecked = chc_cpu.IsChecked;
-			bool? gpuChecked = chc_gpu.IsChecked;
-			bool? ramChecked = chc_ram.IsChecked;
-			bool? hddChecked = chc_hdd.IsChecked;
+			foreach (UserControlMainView control in userControls)
+			{
+				updateMainViewChildVisibility(control);
+			}
+		}
 
-			stc_cpu.Children[0].Visibility = (bool)cpuChecked ? Visibility.Visible : Visibility.Hidden;
-			stc_gpu.Children[0].Visibility = (bool)gpuChecked ? Visibility.Visible : Visibility.Hidden;
-			stc_ram.Children[0].Visibility = (bool)ramChecked ? Visibility.Visible : Visibility.Hidden;
-			stc_hdd.Children[0].Visibility = (bool)hddChecked ? Visibility.Visible : Visibility.Hidden;
+		private void updateMainViewChildVisibility(UserControlMainView control)
+		{
+			mainViewStackPanel.Children.Remove(control);
+			ViewType type = control.type;
+			bool? isChecked = new bool?();
+			switch (type)
+			{
+				case ViewType.CPU:
+					isChecked = chc_cpu.IsChecked;
+					break;
+				case ViewType.GPU:
+					isChecked = chc_gpu.IsChecked;
+					break;
+				case ViewType.RAM:
+					isChecked = chc_ram.IsChecked;
+					break;
+				case ViewType.HDD:
+					isChecked = chc_hdd.IsChecked;
+					break;
+			}
+			if ((bool)isChecked) { 
+				mainViewStackPanel.Children.Add(control);
+			}
+			else
+			{
+				mainViewStackPanel.Children.Remove(control);
+			}
 		}
 
 		private void btn_Help_Click(object sender, RoutedEventArgs e)
