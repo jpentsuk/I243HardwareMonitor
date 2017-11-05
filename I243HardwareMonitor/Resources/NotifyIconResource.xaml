@@ -5,11 +5,31 @@
     <tb:TaskbarIcon x:Key="NotifyIcon"
                     IconSource="/Resources/fan.ico"
                     ToolTipText="Hardware Monitor">
+        
         <tb:TaskbarIcon.ContextMenu>
             <ContextMenu>
                 <MenuItem Header="Selection nr 1"/>
                 <MenuItem Header="Selection nr 2"/>
             </ContextMenu>
         </tb:TaskbarIcon.ContextMenu>
+
+        <tb:TaskbarIcon.TrayPopup>
+            <Border
+                Background="White"
+                BorderBrush="Blue"
+                BorderThickness="2"
+                CornerRadius="4"
+                Width="120"
+                Height="80">
+                <StackPanel>
+                    <Button Content="Open Menu" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"/>
+                    <Button Content="Exit Application"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </tb:TaskbarIcon.TrayPopup>
     </tb:TaskbarIcon>
 </ResourceDictionary>
