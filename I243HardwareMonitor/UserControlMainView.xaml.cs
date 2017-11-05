@@ -35,6 +35,7 @@ namespace I243HardwareMonitor
 
 		public void setComponent()
 		{
+			components = new List<HardwareComponent>();
 			switch (type)
 			{
 				case ViewType.CPU:
@@ -62,7 +63,8 @@ namespace I243HardwareMonitor
 		}
 		public void UpdateLabelInfo()
 		{
-			String labelInfo = String.Empty;	
+			String labelInfo = String.Empty;
+			setComponent();
 			foreach (HardwareComponent component in components)
 			{
 				labelInfo += component + Environment.NewLine;
