@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:I243HardwareMonitor"
         mc:Ignorable="d"
-        Title="Hardware Monitor" Height="470" Width="1000">
+        Title="Hardware Monitor" Height="600" Width="500">
 
     <TabControl>
         <TabItem Header="General">
 			<Grid>
-				<Button Name="btn_Help" Content="?" Margin="937,10,1,365" Click="btn_Help_Click"/>
+				<Button Name="btn_Help" Content="?" Margin="25, 5" Click="btn_Help_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30"/>
 				<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 					<StackPanel Name="mainViewStackPanel" Orientation="Vertical"></StackPanel>
 				</ScrollViewer>
