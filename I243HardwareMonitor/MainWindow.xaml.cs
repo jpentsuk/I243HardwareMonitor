@@ -107,11 +107,5 @@ namespace I243HardwareMonitor
 			var helpwindow = new Help();
 			helpwindow.Show();
 		}
-
-        private void MinToTray(object sender, RoutedEventArgs e)
-        {
-            var trayView = new TrayView();
-            trayView.Show();
-        }
     }
 }

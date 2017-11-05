@@ -26,7 +26,6 @@
                 <CheckBox Name="chc_gpu" Content="Show GPU" IsChecked="True" Click="chc_viewToggle_Changed"/>
                 <CheckBox Name="chc_ram" Content="Show RAM" IsChecked="True" Click="chc_viewToggle_Changed"/>
                 <CheckBox Name="chc_hdd" Content="Show HDD" IsChecked="True" Click="chc_viewToggle_Changed"/>
-                <Button Content="Minimize to Tray" Height="36" Margin="0,0,872,0" Click="MinToTray"/>
             </StackPanel>
         </TabItem>
     </TabControl>

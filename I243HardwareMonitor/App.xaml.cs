@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Hardcodet.Wpf.TaskbarNotification;
 
 namespace I243HardwareMonitor
 {
@@ -13,5 +14,18 @@ namespace I243HardwareMonitor
     /// </summary>
     public partial class App : Application
     {
+        private TaskbarIcon _notifyIcon;
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            _notifyIcon = (TaskbarIcon)FindResource("NotifyIcon");
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _notifyIcon.Dispose();
+            base.OnExit(e);
+        }
     }
 }
