@@ -21,14 +21,14 @@
                 CornerRadius="4"
                 Width="120"
                 Height="80">
-                <StackPanel>
+                <ListBox>
                     <Button Content="Open Menu" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"/>
                     <Button Content="Exit Application"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
-                </StackPanel>
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                </ListBox>
             </Border>
         </tb:TaskbarIcon.TrayPopup>
     </tb:TaskbarIcon>
