@@ -10,10 +10,11 @@
     <TabControl>
         <TabItem Header="General">
 			<Grid>
-				<Button Name="btn_Help" Content="?" Margin="25, 5" Click="btn_Help_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30"/>
+				
 				<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 					<StackPanel Name="mainViewStackPanel" Orientation="Vertical"></StackPanel>
 				</ScrollViewer>
+				<Button Name="btn_Help" Content="?" Margin="25, 5" Click="btn_Help_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30"/>
 			</Grid>
         </TabItem>
         <TabItem Header="Database">
