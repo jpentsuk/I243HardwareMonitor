@@ -30,7 +30,10 @@ namespace I243HardwareMonitor
 			this.hardware = hardware;
 			setComponent();
 			InitializeComponent();
-			componentName.Text = type + ": " + components[0].Name;
+			foreach (HardwareComponent component in components)
+			{
+				componentName.Text = type + ": " + component.Name;
+			}	
 		}
 
 		public void setComponent()
