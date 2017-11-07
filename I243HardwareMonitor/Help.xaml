@@ -5,9 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:I243HardwareMonitor"
         mc:Ignorable="d"
-        Title="Help" Height="300" Width="350">
+        Title="Help" Height="349" Width="350">
     <Grid>
-        <Label x:Name="label" Content="Here we going to have some application tutorial" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TabControl>
+            <TabItem Header="Overview">
+                <TextBlock Margin="28,31,22,28" TextWrapping="Wrap">
+                    With this application one can monitor his/her computer hardware. 
+                    This includes CPU, GPU, RAM, HDD and motherboard information.
+                    <LineBreak/>
+                    <LineBreak/>
+                    Application shows CPU and GPU core name, load, clock, tempeture 
+                    separately by each core as well as bus speed.
+                    
+                    Additionally its possible to monitor HDD and RAM specifications.
+                    <LineBreak/>
+                    <LineBreak/>
+                    Application features:
+                    <LineBreak/>
+                    1) Monitoring in open state
+                    <LineBreak/>
+                    2) Monitor in tray
+                    <LineBreak/>
+                    3) Switch on/off different outputs
+                    <LineBreak/>
+                    4) Store each users` data in database
+                    
+                    
+                    
+                    
+                </TextBlock>
+            </TabItem>
+            <TabItem Header="Controls">
+                <TextBlock TextWrapping="Wrap" Margin="23,27,22,21">
+                    1)Toggle outputs on/off
+                    <LineBreak/>
+                    <LineBreak/>
+                    Click "Preferences" tab and check or uncheck checkboxes to show or hide different output information.
+                    <LineBreak/>
+                    <LineBreak/>
+                    2) Run application in tray
+                    <LineBreak/>
+                    <LineBreak/>
+                    Click "minimize" button to minimize main program and let monitoring take place on background.
+                    <LineBreak/>
+                    <LineBreak/>
+                    3) Show help
+                    <LineBreak/>
+                    <LineBreak/>
+                    Click "?" to view help
+                </TextBlock>
+            </TabItem>
+            <TabItem Header="About">
+                <TextBlock TextWrapping="Wrap" Margin="56,39,76,1" HorizontalAlignment="Center">
+                 HardwareMonitor<LineBreak/>Version 1.0<LineBreak/>® 2018 IT College 
+                   <LineBreak/>  All rights reserved
+                </TextBlock>
+            </TabItem>
+
+
+        </TabControl>
+
 
     </Grid>
 </Window>
