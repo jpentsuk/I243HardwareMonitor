@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:I243HardwareMonitor"
         mc:Ignorable="d"
         Title="Help" Height="349" Width="350">
+    <!-- Added window opening animation. Source: https://stackoverflow.com/questions/754739/how-to-animate-a-window -->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+                    <DoubleAnimation From="0" To="1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <TabControl>
             <TabItem Header="Overview">
