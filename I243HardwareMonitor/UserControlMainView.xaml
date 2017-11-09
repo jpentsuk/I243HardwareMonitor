@@ -7,11 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="170" d:DesignWidth="400">
 	<Grid>
-		<Border Name="brd_main_view" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Left" Height="150"  VerticalAlignment="Stretch" Width="400" Margin="5, 10, 0, 0">
+		<Border Name="brd_main_view" BorderThickness="1" BorderBrush="Blue" HorizontalAlignment="Stretch" Height="80" VerticalAlignment="Stretch" Margin="5, 10, 5, 0">
 			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 				<StackPanel Name="containerPanel" Orientation="Vertical">
-					<TextBlock Name="componentName"/>
-					<Label Name="lbl_main_view_info" Content=""/>
+					<TextBlock Name="componentName" Margin="10, 5, 10, 0"/>
+					<Label Name="lbl_main_view_info" Content="" Margin="10, 0, 10, 0"/>
 				</StackPanel>
 			</ScrollViewer>
 		</Border>
