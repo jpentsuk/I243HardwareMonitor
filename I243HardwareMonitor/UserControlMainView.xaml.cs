@@ -96,23 +96,36 @@ namespace I243HardwareMonitor
 				switch (type)
 				{
 					case ViewType.CPU:
-						progressBars[0].Value = double.Parse(component.Sensors[component.Sensors.Count - 1].Value);
-						labelInfo = "Total " + component.Sensors[component.Sensors.Count - 1].Type + ": " + component.Sensors[component.Sensors.Count - 1].Value;
+						if (components.Count > 0)
+						{
+							progressBars[0].Value = double.Parse(component.Sensors[component.Sensors.Count - 1].Value);
+							labelInfo = "Total " + component.Sensors[component.Sensors.Count - 1].Type + ": " +
+							            component.Sensors[component.Sensors.Count - 1].Value;
+						}
 						break;
 					case ViewType.GPU:
-						mainSensor = getSensorWithType("Temperature");
-						labelInfo = mainSensor.Type + ": " + mainSensor.Value;
-						progressBars[0].Value = double.Parse(mainSensor.Value);
+						if (components.Count > 0)
+						{
+							mainSensor = getSensorWithType("Temperature");
+							labelInfo = mainSensor.Type + ": " + mainSensor.Value;
+							progressBars[0].Value = double.Parse(mainSensor.Value);
+						}
 						break;
 					case ViewType.HDD:
-						mainSensor = getSensorWithType("Used");
-						labelInfo = mainSensor.Type + ": " + mainSensor.Value;
-						progressBars[0].Value = double.Parse(mainSensor.Value);
-						break;
+						if (components.Count > 0)
+						{
+							mainSensor = getSensorWithType("Used");
+							labelInfo = mainSensor.Type + ": " + mainSensor.Value;
+							progressBars[0].Value = double.Parse(mainSensor.Value);
+						}
+				break;
 					case ViewType.RAM:
-						mainSensor = getSensorWithType("Used");
-						labelInfo = "In use : " + mainSensor.Value;
-						progressBars[0].Value = double.Parse(mainSensor.Value);
+						if (components.Count > 0)
+						{
+							mainSensor = getSensorWithType("Used");
+							labelInfo = "In use : " + mainSensor.Value;
+							progressBars[0].Value = double.Parse(mainSensor.Value);
+						}
 						break;
 				}
 			}
