@@ -47,7 +47,6 @@ namespace I243HardwareMonitor
 			loadProgressBar.Value = 0;
 			containerPanel.Children.Add(loadProgressBar);
 			progressBars.Add(loadProgressBar);
-			Debug.WriteLine(components[0].ToString());
 			if (type == ViewType.RAM)
 			{	
 				loadProgressBar.Maximum = Double.Parse(getSensorWithType("Available").Value);
