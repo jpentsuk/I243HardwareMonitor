@@ -107,15 +107,5 @@ namespace I243HardwareMonitor
 			var helpwindow = new Help();
 			helpwindow.Show();
 		}
-
-        protected override void OnStateChanged(EventArgs e)
-        {
-            base.OnStateChanged(e);
-            if (this.WindowState == WindowState.Minimized)
-            {
-                this.Hide();
-            }
-            else return;
-        }
     }
 }
