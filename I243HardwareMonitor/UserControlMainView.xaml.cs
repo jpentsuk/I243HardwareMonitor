@@ -135,13 +135,13 @@ namespace I243HardwareMonitor
 			foreach (ProgressBar progressBar in progressBars)
 			{
 				double currentValueRatio = progressBar.Value / progressBar.Maximum;
-				if (currentValueRatio < 0.25)
+				if (currentValueRatio < 0.4)
 				{
 					progressBar.Foreground = System.Windows.Media.Brushes.LawnGreen;
-				} else if (currentValueRatio < 0.5)
+				} else if (currentValueRatio < 0.55)
 				{
 					progressBar.Foreground = System.Windows.Media.Brushes.Yellow;
-				} else if (currentValueRatio < 0.75)
+				} else if (currentValueRatio < 0.65)
 				{
 					progressBar.Foreground = System.Windows.Media.Brushes.Orange;
 				} else
