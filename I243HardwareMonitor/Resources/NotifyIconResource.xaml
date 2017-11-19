@@ -5,10 +5,10 @@
                     x:Class="I234HardwareMonitor.NotifyIconViewModel">
 
     <ContextMenu x:Shared="false" x:Key="SysTrayMenu">
-        <MenuItem Header="Ava Suur Aken" Command="{Binding ShowWindowCommand}"/>
-        <MenuItem Header="Peida Suur Aken" Command="{Binding HideWindowCommand}"/>
+        <MenuItem Header="Open Main Window" Command="{Binding ShowWindowCommand}"/>
+        <MenuItem Header="Hide Main Window" Command="{Binding HideWindowCommand}"/>
         <Separator/>
-        <MenuItem Header="Välju" Command="{Binding ExitProgramCommand}"/>
+        <MenuItem Header="Exit Applcation" Command="{Binding ExitProgramCommand}"/>
     </ContextMenu>
 
     <tb:TaskbarIcon x:Key="NotifyIcon"
