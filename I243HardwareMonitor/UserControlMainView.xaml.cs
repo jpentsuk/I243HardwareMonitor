@@ -49,7 +49,7 @@ namespace I243HardwareMonitor
 			progressBars.Add(loadProgressBar);
 			if (type == ViewType.RAM)
 			{	
-				loadProgressBar.Maximum = Double.Parse(getSensorWithType("Available").Value);
+				loadProgressBar.Maximum = 100;
 			} else if (type == ViewType.HDD)
 			{
 				loadProgressBar.Visibility = Visibility.Hidden;
@@ -122,8 +122,9 @@ namespace I243HardwareMonitor
 						if (components.Count > 0)
 						{
 							mainSensor = getSensorWithType("Used");
-							labelInfo = "In use : " + mainSensor.Value;
-							progressBars[0].Value = double.Parse(mainSensor.Value);
+							HardwareSensor loadSensor = getSensorWithType("Load");
+							labelInfo = "In use : " + mainSensor.Value + "GB (" + loadSensor.Value + "%)";
+							progressBars[0].Value = double.Parse(loadSensor.Value);
 						}
 						break;
 				}
