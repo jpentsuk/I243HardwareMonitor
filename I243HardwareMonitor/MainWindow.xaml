@@ -30,15 +30,29 @@
         </TabItem>
 
         <TabItem Header="Preferences">
-	        <Border Name="brd_main_view" BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
-				<StackPanel Name="stc_preferences">
-					<Label Content="General view components: "></Label>
-					<CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU" IsChecked="True" Click="chc_viewToggle_Changed"/>
-					<CheckBox Margin="5, 1, 5, 0" Name="chc_gpu" Content="Show GPU" IsChecked="True" Click="chc_viewToggle_Changed"/>
-					<CheckBox Margin="5, 1, 5, 0" Name="chc_ram" Content="Show RAM" IsChecked="True" Click="chc_viewToggle_Changed"/>
-					<CheckBox Margin="5, 1, 5, 0" Name="chc_hdd" Content="Show HDD" IsChecked="True" Click="chc_viewToggle_Changed"/>
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+				<StackPanel Name="stc_content_holder">
+					<Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
+						<StackPanel Name="stc_preferences">
+							<Label Name="label_settings_general"  Content="General tab settings: "></Label>
+						
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU load" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_gpu" Content="Show GPU temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_ram" Content="Show RAM load" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_hdd" Content="Show HDD used" IsChecked="True" Click="chc_viewToggle_Changed"/>
+						</StackPanel>
+					</Border>
+					<Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
+						<StackPanel Name="stc_notif_settings">
+							<Label Name="label_settngs_notifications"  Content="Notification settings: "></Label>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_gpu_warning" Content="Enable GPU temperature warning" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<TextBlock Margin="5, 1, 5, 0"><Run Text="Show GPU temperature warning at: "/><InlineUIContainer>
+									<TextBox Height="17" TextWrapping="Wrap" Text="75" Width="30"/>
+								</InlineUIContainer></TextBlock>
+						</StackPanel>
+					</Border>
 				</StackPanel>
-			</Border>
+			</ScrollViewer>
 		</TabItem>
     </TabControl>
 </Window>
