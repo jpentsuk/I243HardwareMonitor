@@ -120,7 +120,8 @@ namespace I243HardwareMonitor
 						{
 							mainSensor = getSensorWithType("Used");
 							HardwareSensor loadSensor = getSensorWithType("Load");
-							labelInfo = "In use : " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "GB (" + string.Format("{0:0.00}", Double.Parse(loadSensor.Value)) + "%)";
+							String availableMemory = string.Format("{0:0.0}", double.Parse(mainSensor.Value) / double.Parse(loadSensor.Value) * 100);
+							labelInfo = "In use : " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "GB/" + availableMemory + "GB (" + string.Format("{0:0.00}", Double.Parse(loadSensor.Value)) + "%)";
 							progressBars[0].Value = double.Parse(loadSensor.Value);
 						}
 						break;
