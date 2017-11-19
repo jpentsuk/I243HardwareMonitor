@@ -32,6 +32,7 @@ namespace I243HardwareMonitor
 		public MainWindow()
 		{
 			this.hardware = new HardwareInfo();
+			Debug.WriteLine(hardware.ToString());
 			this.userControls = new List<UserControlMainView>();
 			this.timer = new DispatcherTimer();
 			InitializeComponent();
