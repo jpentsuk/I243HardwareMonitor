@@ -96,7 +96,7 @@ namespace I243HardwareMonitor
 						{
 							progressBars[0].Value = double.Parse(component.Sensors[component.Sensors.Count - 1].Value);
 							labelInfo = "Total " + component.Sensors[component.Sensors.Count - 1].Type + ": " +
-							            component.Sensors[component.Sensors.Count - 1].Value;
+							            string.Format("{0:0.00}", Double.Parse(component.Sensors[component.Sensors.Count - 1].Value)) + "%";
 						}
 						break;
 					case ViewType.GPU:
@@ -111,7 +111,7 @@ namespace I243HardwareMonitor
 						if (components.Count > 0)
 						{
 							mainSensor = getSensorWithType("Used");
-							labelInfo ="Used space: " + mainSensor.Value + "%";
+							labelInfo ="Used space: " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "%";
 							progressBars[0].Value = double.Parse(mainSensor.Value);
 						}
 				break;
@@ -120,7 +120,7 @@ namespace I243HardwareMonitor
 						{
 							mainSensor = getSensorWithType("Used");
 							HardwareSensor loadSensor = getSensorWithType("Load");
-							labelInfo = "In use : " + mainSensor.Value + "GB (" + loadSensor.Value + "%)";
+							labelInfo = "In use : " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "GB (" + string.Format("{0:0.00}", Double.Parse(loadSensor.Value)) + "%)";
 							progressBars[0].Value = double.Parse(loadSensor.Value);
 						}
 						break;
