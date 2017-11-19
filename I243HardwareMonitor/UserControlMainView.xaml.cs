@@ -141,7 +141,7 @@ namespace I243HardwareMonitor
 				} else if (currentValueRatio < 0.55)
 				{
 					progressBar.Foreground = System.Windows.Media.Brushes.Yellow;
-				} else if (currentValueRatio < 0.65)
+				} else if (currentValueRatio < 0.75)
 				{
 					progressBar.Foreground = System.Windows.Media.Brushes.Orange;
 				} else
