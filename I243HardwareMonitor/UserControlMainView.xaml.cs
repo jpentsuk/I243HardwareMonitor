@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.SqlServer.Server;
 
 namespace I243HardwareMonitor
 {
@@ -47,14 +48,10 @@ namespace I243HardwareMonitor
 			loadProgressBar.Value = 0;
 			containerPanel.Children.Add(loadProgressBar);
 			progressBars.Add(loadProgressBar);
-			if (type == ViewType.RAM)
-			{	
-				loadProgressBar.Maximum = 100;
-			} else if (type == ViewType.HDD)
+			if (type == ViewType.RAM || type == ViewType.HDD)
 			{
-				loadProgressBar.Visibility = Visibility.Hidden;
+				loadProgressBar.Maximum = 100;
 			}
-			
 		}
 
 		public void setComponent()
@@ -114,7 +111,7 @@ namespace I243HardwareMonitor
 						if (components.Count > 0)
 						{
 							mainSensor = getSensorWithType("Used");
-							labelInfo = mainSensor.Type + ": " + mainSensor.Value;
+							labelInfo ="Used space: " + mainSensor.Value + "%";
 							progressBars[0].Value = double.Parse(mainSensor.Value);
 						}
 				break;
