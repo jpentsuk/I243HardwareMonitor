@@ -41,7 +41,7 @@ namespace I243HardwareMonitor
 			loadProgressBar.Margin = new Thickness(10, 0, 10, 5);
 			loadProgressBar.Visibility = Visibility.Visible;
 			loadProgressBar.Height = 25;
-			loadProgressBar.Foreground = System.Windows.Media.Brushes.Blue;
+			loadProgressBar.Foreground = System.Windows.Media.Brushes.LawnGreen;
 			loadProgressBar.Background = System.Windows.Media.Brushes.White;
 			loadProgressBar.Maximum = 110;
 			loadProgressBar.Value = 0;
@@ -129,6 +129,29 @@ namespace I243HardwareMonitor
 				}
 			}
 			lbl_main_view_info.Content = labelInfo;
+			MatchProgressBarColorToLoad();
+		}
+
+		private void MatchProgressBarColorToLoad()
+		{
+			foreach (ProgressBar progressBar in progressBars)
+			{
+				double currentValueRatio = progressBar.Value / progressBar.Maximum;
+				if (currentValueRatio < 0.25)
+				{
+					progressBar.Foreground = System.Windows.Media.Brushes.LawnGreen;
+				} else if (currentValueRatio < 0.5)
+				{
+					progressBar.Foreground = System.Windows.Media.Brushes.Yellow;
+				} else if (currentValueRatio < 0.75)
+				{
+					progressBar.Foreground = System.Windows.Media.Brushes.Orange;
+				} else
+				{
+					progressBar.Foreground = System.Windows.Media.Brushes.Red;
+				}
+				
+			}
 		}
 
 		private HardwareSensor getSensorWithType(String type)
