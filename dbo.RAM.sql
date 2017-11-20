@@ -2,6 +2,7 @@
     [Id]      INT        IDENTITY (1, 1) NOT NULL,
     [UsersID] INT        NOT NULL,
     [InUse]   FLOAT (53) NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
+    PRIMARY KEY CLUSTERED ([Id] ASC), 
+    CONSTRAINT [FK_RAM_Users] FOREIGN KEY (UsersID) REFERENCES Users(UsersID)
 );
 
