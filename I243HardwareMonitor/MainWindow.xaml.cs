@@ -32,12 +32,11 @@ namespace I243HardwareMonitor
 		private DispatcherTimer timer;
 		private List<UserControlMainView> userControls;
 
-        public String connectionString;
+        public String connectionString = ConfigurationManager.ConnectionStrings["I243HardwareMonitor.Properties.Settings.MonitoringDataConnectionString"].ConnectionString;
         public SqlConnection connection = new SqlConnection();
 
 		public MainWindow()
 		{
-            connectionString = ConfigurationManager.ConnectionStrings["I243HardwareMonitor.Properties.Settings.MonitoringDataConnectionString"].ConnectionString;
 			this.hardware = new HardwareInfo();
 			Debug.WriteLine(hardware.ToString());
 			this.userControls = new List<UserControlMainView>();
@@ -45,6 +44,9 @@ namespace I243HardwareMonitor
 			InitializeComponent();
 			createMainUserControls();
 			StartTimer();
+
+            // just filling textboxes with hardware data to test saving in database
+            filltextboxes();
 		}
 
 		private void createMainUserControls()
@@ -132,6 +134,48 @@ namespace I243HardwareMonitor
 
             dgd_users.ItemsSource = users.DefaultView;
             adapter.Update(users);
+        }
+
+        private void btn_cleartabledata_Click(object sender, RoutedEventArgs e)
+        {
+            dgd_users.ItemsSource = null;
+        }
+
+        private void filltextboxes()
+        {
+            txb_cpu.Text = hardware.CPUs[0].Name.ToString();
+            //txb_gpu.Text = hardware.GPUs[0].Name.ToString();
+            txb_hdd.Text = hardware.HDDs[0].Name.ToString();
+            txb_ram.Text = hardware.RAM.Name.ToString();
+        }
+
+        private void btn_savedata_Click(object sender, RoutedEventArgs e)
+        {
+            connection = new SqlConnection(connectionString);
+            
+
+            String query = "INSERT INTO Users (CPU, GPU, HDD, RAM) values('" + this.txb_cpu.Text + "','" + this.txb_gpu.Text + "','" + this.txb_hdd.Text + "','" + this.txb_ram.Text + "') ;";
+
+            SqlCommand command = new SqlCommand(query,connection);
+            
+            SqlDataReader datareader;
+            try
+            {
+                connection.Open();
+                datareader = command.ExecuteReader();
+                MessageBox.Show("Saved");
+                while(datareader.Read())
+                {
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+
+
         }
     }
 }
