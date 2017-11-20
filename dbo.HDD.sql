@@ -2,5 +2,6 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [UsersID] INT NOT NULL, 
-    [Load] FLOAT NOT NULL
+    [Load] FLOAT NULL, 
+    CONSTRAINT [FK_HDD_ToUsers] FOREIGN KEY (UsersID) REFERENCES Users(UsersID)
 )

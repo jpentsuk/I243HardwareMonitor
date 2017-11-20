@@ -2,6 +2,6 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
     [UsersID] INT NOT NULL, 
-    [InUse] FLOAT NOT NULL, 
+    [InUse] NCHAR(10) NULL, 
     CONSTRAINT [FK_RAM_ToUsers] FOREIGN KEY (UsersID) REFERENCES Users(UsersID)
 )
