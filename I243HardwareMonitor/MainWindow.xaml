@@ -18,18 +18,19 @@
     </Window.Triggers>
     <TabControl>
         <TabItem Header="General">
-			<Grid>
-				<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0, 30, 0, 0">
-					<StackPanel Name="mainViewStackPanel" Orientation="Vertical"></StackPanel>
-				</ScrollViewer>
-				<Button Name="btn_Help" Content="?" Margin="5, 5" Click="btn_Help_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30"/>
-			</Grid>
+            <Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0, 30, 0, 0">
+                    <StackPanel Name="mainViewStackPanel" Orientation="Vertical"></StackPanel>
+                </ScrollViewer>
+                <Button Name="btn_Help" Content="?" Margin="5, 5" Click="btn_Help_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30"/>
+            </Grid>
         </TabItem>
         <TabItem Header="Database">
             <Grid>
                 <Label Name="lbl_users" Content="Users"></Label>
-                <ListBox HorizontalAlignment="Left" Height="100" Margin="10,44,0,0" VerticalAlignment="Top" Width="278"/>
-                <Button Name="btn_showusers" Content="Show Users" HorizontalAlignment="Left" Margin="309,10,0,0" VerticalAlignment="Top" Width="75"/>
+
+                <Button Name="btn_showusers" Content="Show Users" HorizontalAlignment="Left" Margin="309,10,0,0" VerticalAlignment="Top" Width="75" Click="btn_showusers_Click"/>
+                <DataGrid Name="dgd_users" HorizontalAlignment="Left" Height="270" Margin="22,39,0,0" VerticalAlignment="Top" Width="419"/>
 
 
             </Grid>
@@ -37,29 +38,29 @@
         </TabItem>
 
         <TabItem Header="Preferences">
-			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-				<StackPanel Name="stc_content_holder">
-					<Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
-						<StackPanel Name="stc_preferences">
-							<Label Name="label_settings_general"  Content="General tab settings: "></Label>
-						
-							<CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU load" IsChecked="True" Click="chc_viewToggle_Changed"/>
-							<CheckBox Margin="5, 1, 5, 0" Name="chc_gpu" Content="Show GPU temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
-							<CheckBox Margin="5, 1, 5, 0" Name="chc_ram" Content="Show RAM load" IsChecked="True" Click="chc_viewToggle_Changed"/>
-							<CheckBox Margin="5, 1, 5, 0" Name="chc_hdd" Content="Show HDD used" IsChecked="True" Click="chc_viewToggle_Changed"/>
-						</StackPanel>
-					</Border>
-					<Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
-						<StackPanel Name="stc_notif_settings">
-							<Label Name="label_settngs_notifications"  Content="Notification settings: "></Label>
-							<CheckBox Margin="5, 1, 5, 0" Name="chc_gpu_warning" Content="Enable GPU temperature warning" IsChecked="True" Click="chc_viewToggle_Changed"/>
-							<TextBlock Margin="5, 1, 5, 0"><Run Text="Show GPU temperature warning at: "/><InlineUIContainer>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <StackPanel Name="stc_content_holder">
+                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
+                        <StackPanel Name="stc_preferences">
+                            <Label Name="label_settings_general"  Content="General tab settings: "></Label>
+
+                            <CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU load" IsChecked="True" Click="chc_viewToggle_Changed"/>
+                            <CheckBox Margin="5, 1, 5, 0" Name="chc_gpu" Content="Show GPU temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
+                            <CheckBox Margin="5, 1, 5, 0" Name="chc_ram" Content="Show RAM load" IsChecked="True" Click="chc_viewToggle_Changed"/>
+                            <CheckBox Margin="5, 1, 5, 0" Name="chc_hdd" Content="Show HDD used" IsChecked="True" Click="chc_viewToggle_Changed"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
+                        <StackPanel Name="stc_notif_settings">
+                            <Label Name="label_settngs_notifications"  Content="Notification settings: "></Label>
+                            <CheckBox Margin="5, 1, 5, 0" Name="chc_gpu_warning" Content="Enable GPU temperature warning" IsChecked="True" Click="chc_viewToggle_Changed"/>
+                            <TextBlock Margin="5, 1, 5, 0"><Run Text="Show GPU temperature warning at: "/><InlineUIContainer>
 									<TextBox Height="17" TextWrapping="Wrap" Text="75" Width="30"/>
 								</InlineUIContainer></TextBlock>
-						</StackPanel>
-					</Border>
-				</StackPanel>
-			</ScrollViewer>
-		</TabItem>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
     </TabControl>
 </Window>

@@ -17,6 +17,9 @@ using OpenHardwareMonitor.Hardware;
 using OpenHardwareMonitor.Collections;
 using System.Diagnostics;
 using System.Windows.Threading;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace I243HardwareMonitor
 {
@@ -29,8 +32,12 @@ namespace I243HardwareMonitor
 		private DispatcherTimer timer;
 		private List<UserControlMainView> userControls;
 
+        public String connectionString;
+        public SqlConnection connection = new SqlConnection();
+
 		public MainWindow()
 		{
+            connectionString = ConfigurationManager.ConnectionStrings["I243HardwareMonitor.Properties.Settings.MonitoringDataConnectionString"].ConnectionString;
 			this.hardware = new HardwareInfo();
 			Debug.WriteLine(hardware.ToString());
 			this.userControls = new List<UserControlMainView>();
@@ -108,5 +115,23 @@ namespace I243HardwareMonitor
 			var helpwindow = new Help();
 			helpwindow.Show();
 		}
+
+        private void btn_showusers_Click(object sender, RoutedEventArgs e)
+        {
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            String query = "SELECT * FROM Users";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable users = new DataTable("Users");
+
+            adapter.Fill(users);
+
+            dgd_users.ItemsSource = users.DefaultView;
+            adapter.Update(users);
+        }
     }
 }
