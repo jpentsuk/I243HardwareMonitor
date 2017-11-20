@@ -1,8 +1,7 @@
-﻿CREATE TABLE [dbo].[RAM] (
-    [Id]      INT        IDENTITY (1, 1) NOT NULL,
-    [UsersID] INT        NOT NULL,
-    [InUse]   FLOAT (53) NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC), 
-    CONSTRAINT [FK_RAM_Users] FOREIGN KEY (UsersID) REFERENCES Users(UsersID)
-);
-
+﻿CREATE TABLE [dbo].[RAM]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [UsersID] INT NOT NULL, 
+    [InUse] FLOAT NOT NULL, 
+    CONSTRAINT [FK_RAM_ToUsers] FOREIGN KEY (UsersID) REFERENCES Users(UsersID)
+)
