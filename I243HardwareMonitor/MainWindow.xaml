@@ -26,6 +26,13 @@
 			</Grid>
         </TabItem>
         <TabItem Header="Database">
+            <Grid>
+                <Label Name="lbl_users" Content="Users"></Label>
+                <ListBox HorizontalAlignment="Left" Height="100" Margin="10,44,0,0" VerticalAlignment="Top" Width="278"/>
+                <Button Name="btn_showusers" Content="Show Users" HorizontalAlignment="Left" Margin="309,10,0,0" VerticalAlignment="Top" Width="75"/>
+
+
+            </Grid>
 
         </TabItem>
 
