@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[HDD]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [UsersID] INT NOT NULL, 
+    [Load] FLOAT NOT NULL
+)
