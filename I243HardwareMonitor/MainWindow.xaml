@@ -36,11 +36,6 @@
                 <Button Name="btn_cleartabledata" Content="Clear Table Data" HorizontalAlignment="Left" Margin="22,190,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.253,-0.1" Click="btn_cleartabledata_Click"/>
                 <Button Name="btn_savedata" Content="Save Into Database" Margin="309,358,57,28" RenderTransformOrigin="0.52,1.567" Click="btn_savedata_Click"/>
 
-                <TextBox Name="txb_cpu" HorizontalAlignment="Left" Height="41" Margin="309,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.425,-2.261"/>
-                <TextBox Name="txb_gpu" HorizontalAlignment="Left" Height="35" Margin="309,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.425,-2.261"/>
-                <TextBox Name ="txb_hdd" HorizontalAlignment="Left" Height="37" Margin="309,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.425,-2.261"/>
-                <TextBox Name="txb_ram" HorizontalAlignment="Left" Height="32" Margin="309,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.425,-2.261"/>
-
 
             </Grid>
 

@@ -45,8 +45,6 @@ namespace I243HardwareMonitor
 			createMainUserControls();
 			StartTimer();
 
-            // just filling textboxes with hardware data to test saving in database
-            filltextboxes();
 		}
 
 		private void createMainUserControls()
@@ -69,10 +67,12 @@ namespace I243HardwareMonitor
 		private void UpdateInfoOnMainViewComponents(object sender, EventArgs e)
 		{
 			hardware.Update();
+
 			foreach (UserControlMainView control in userControls)
 			{
 				control.UpdateLabelInfo();
 			}
+
 		}
 
 		private void chc_viewToggle_Changed(object sender, RoutedEventArgs e)
@@ -141,20 +141,13 @@ namespace I243HardwareMonitor
             dgd_users.ItemsSource = null;
         }
 
-        private void filltextboxes()
-        {
-            txb_cpu.Text = hardware.CPUs[0].Name.ToString();
-            //txb_gpu.Text = hardware.GPUs[0].Name.ToString();
-            txb_hdd.Text = hardware.HDDs[0].Name.ToString();
-            txb_ram.Text = hardware.RAM.Name.ToString();
-        }
 
         private void btn_savedata_Click(object sender, RoutedEventArgs e)
         {
             connection = new SqlConnection(connectionString);
-            
 
-            String query = "INSERT INTO Users (CPU, GPU, HDD, RAM) values('" + this.txb_cpu.Text + "','" + this.txb_gpu.Text + "','" + this.txb_hdd.Text + "','" + this.txb_ram.Text + "') ;";
+            String query = "INSERT INTO Users (CPU, HDD, RAM) values('" + this.hardware.CPUs[0].Name.ToString() + "','"  + this.hardware.HDDs[0].Name.ToString() + "','" + this.hardware.RAM.Name.ToString() + "') ;";
+            //String query = "INSERT INTO CPU (TotalClock) values('" + this.hardware.CPUs[0].Sensors.
 
             SqlCommand command = new SqlCommand(query,connection);
             
@@ -164,10 +157,6 @@ namespace I243HardwareMonitor
                 connection.Open();
                 datareader = command.ExecuteReader();
                 MessageBox.Show("Saved");
-                while(datareader.Read())
-                {
-
-                }
             }
             catch(Exception ex)
             {
@@ -175,7 +164,8 @@ namespace I243HardwareMonitor
             }
             
 
-
+    
         }
+        
     }
 }
