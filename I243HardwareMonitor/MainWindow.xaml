@@ -35,10 +35,11 @@
 
                 </Label>
 
-                <Button Name="btn_showusers" Content="Show User Data" HorizontalAlignment="Left" Margin="309,10,0,0" VerticalAlignment="Top" Width="99" Click="btn_showusers_Click"/>
-                <DataGrid Name="dgd_users" HorizontalAlignment="Left" Height="136" Margin="22,39,0,0" VerticalAlignment="Top" Width="419"/>
-                <Button Name="btn_cleartabledata" Content="Clear Table Data" HorizontalAlignment="Left" Margin="22,190,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.253,-0.1" Click="btn_cleartabledata_Click"/>
-                <Button Name="btn_savedata" Content="Save Into Database" Margin="309,358,57,28" RenderTransformOrigin="0.52,1.567" Click="btn_savedata_Click"/>
+                <DataGrid Name="dgd_users" HorizontalAlignment="Left" Height="77" Margin="22,39,0,0" VerticalAlignment="Top" Width="419"/>
+                <DataGrid x:Name="dgd_cpu" HorizontalAlignment="Left" Height="90" Margin="22,159,0,0" VerticalAlignment="Top" Width="419"/>
+                <Button Name="btn_savedata" Content="Start Saving Into Database" Margin="309,358,10,28" RenderTransformOrigin="0.52,1.567" Click="btn_savedata_Click"/>
+                <Button x:Name="btn_stopsavedata" Content="Stop Saving Into Database" Margin="137,358,182,28" RenderTransformOrigin="0.52,1.567" Click="btn_stopsavedata_Click"/>
+                <Button Name="btn_showdata" Content="Show Data" HorizontalAlignment="Left" Margin="387,10,0,0" VerticalAlignment="Top" Width="75" Click="btn_showdata_Click"/>
 
 
             </Grid>
