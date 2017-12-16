@@ -31,6 +31,7 @@ namespace I243HardwareMonitor
 		private HardwareInfo hardware;
 		private DispatcherTimer timer;
 		private List<UserControlMainView> userControls;
+		private List<NotificationHandler> notificationHandlers;
 
         public String connectionString = ConfigurationManager.ConnectionStrings["I243HardwareMonitor.Properties.Settings.MonitoringDataConnectionString"].ConnectionString;
         public SqlConnection connection = new SqlConnection();
@@ -43,13 +44,34 @@ namespace I243HardwareMonitor
 			this.timer = new DispatcherTimer();
 			InitializeComponent();
 			createMainUserControls();
+			initNotificationHandlers();
 			StartTimer();
-
 		}
 
+		private void initNotificationHandlers()
+		{
+			notificationHandlers.Add(new NotificationHandler(tb_cpu_temp_warning, HardwareType.CPU, 75));
+		}
+
+		private void updateNotificationSettings(object sender, TextChangedEventArgs args)
+		{
+			foreach (HardwareType type in Enum.GetValues(typeof(HardwareType)))
+			{
+				foreach (NotificationHandler handler in notificationHandlers)
+				{
+					if (handler.type == type)
+					{
+						if (!handler.TryAndUpdateNotificationValue())
+						{
+							handler.textBox.Text = "100";
+						}
+					}
+				}
+			}
+		}
 		private void createMainUserControls()
 		{
-			foreach (ViewType type in Enum.GetValues(typeof(ViewType)))
+			foreach (HardwareType type in Enum.GetValues(typeof(HardwareType)))
 			{
 				UserControlMainView control = new UserControlMainView(hardware, type);
 				userControls.Add(control);
@@ -86,20 +108,20 @@ namespace I243HardwareMonitor
 		private void updateMainViewChildVisibility(UserControlMainView control)
 		{
 			mainViewStackPanel.Children.Remove(control);
-			ViewType type = control.type;
+			HardwareType type = control.type;
 			bool? isChecked = new bool?();
 			switch (type)
 			{
-				case ViewType.CPU:
+				case HardwareType.CPU:
 					isChecked = chc_cpu.IsChecked;
 					break;
-				case ViewType.GPU:
+				case HardwareType.GPU:
 					isChecked = chc_gpu.IsChecked;
 					break;
-				case ViewType.RAM:
+				case HardwareType.RAM:
 					isChecked = chc_ram.IsChecked;
 					break;
-				case ViewType.HDD:
+				case HardwareType.HDD:
 					isChecked = chc_hdd.IsChecked;
 					break;
 			}

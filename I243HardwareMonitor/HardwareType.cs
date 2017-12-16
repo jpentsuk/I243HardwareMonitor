@@ -1,6 +1,6 @@
 ﻿namespace I243HardwareMonitor
 {
-	public enum ViewType
+	public enum HardwareType
 	{
 		CPU,
 		GPU,

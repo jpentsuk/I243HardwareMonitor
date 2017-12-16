@@ -79,11 +79,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="NotificationHandler.cs" />
     <Compile Include="NotifyIconViewModel.cs" />
     <Compile Include="UserControlMainView.xaml.cs">
       <DependentUpon>UserControlMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewType.cs" />
+    <Compile Include="HardwareType.cs" />
     <Page Include="Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

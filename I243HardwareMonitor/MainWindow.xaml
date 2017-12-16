@@ -59,7 +59,7 @@
                             <Label Name="label_settngs_notifications"  Content="Notification settings: "></Label>
                             <CheckBox Margin="5, 1, 5, 0" Name="chc_gpu_warning" Content="Enable GPU temperature warning" IsChecked="True" Click="chc_viewToggle_Changed"/>
                             <TextBlock Margin="5, 1, 5, 0"><Run Text="Show GPU temperature warning at: "/><InlineUIContainer>
-									<TextBox Height="17" TextWrapping="Wrap" Text="75" Width="30"/>
+									<TextBox Name="tb_cpu_temp_warning" Height="17" TextWrapping="Wrap" Text="75" Width="30" TextChanged="updateNotificationSettings"/>
 								</InlineUIContainer></TextBlock>
                         </StackPanel>
                     </Border>

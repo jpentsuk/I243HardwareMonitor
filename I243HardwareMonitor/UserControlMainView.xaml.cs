@@ -22,11 +22,11 @@ namespace I243HardwareMonitor
 	/// </summary>
 	public partial class UserControlMainView : UserControl
 	{
-		public ViewType type { get; }
+		public HardwareType type { get; }
 		private HardwareInfo hardware;
 		private List<HardwareComponent> components;
 		private List<ProgressBar> progressBars;
-		public UserControlMainView(HardwareInfo hardware, ViewType type)
+		public UserControlMainView(HardwareInfo hardware, HardwareType type)
 		{
 			this.components = new List<HardwareComponent>();
 			this.progressBars = new List<ProgressBar>();
@@ -48,7 +48,7 @@ namespace I243HardwareMonitor
 			loadProgressBar.Value = 0;
 			containerPanel.Children.Add(loadProgressBar);
 			progressBars.Add(loadProgressBar);
-			if (type == ViewType.RAM || type == ViewType.HDD)
+			if (type == HardwareType.RAM || type == HardwareType.HDD)
 			{
 				loadProgressBar.Maximum = 100;
 			}
@@ -59,25 +59,25 @@ namespace I243HardwareMonitor
 			components = new List<HardwareComponent>();
 			switch (type)
 			{
-				case ViewType.CPU:
+				case HardwareType.CPU:
 					foreach (HardwareComponent cpu in hardware.CPUs)
 					{
 						components.Add(cpu);
 					}
 					break;
-				case ViewType.GPU:
+				case HardwareType.GPU:
 					foreach (HardwareComponent gpu in hardware.GPUs)
 					{
 						components.Add(gpu);
 					}
 					break;
-				case ViewType.HDD:
+				case HardwareType.HDD:
 					foreach (HardwareComponent hdd in hardware.HDDs)
 					{
 						components.Add(hdd);
 					};
 					break;
-				case ViewType.RAM:
+				case HardwareType.RAM:
 					components.Add(hardware.RAM);
 					break;
 			}
@@ -91,7 +91,7 @@ namespace I243HardwareMonitor
 				HardwareSensor mainSensor;
 				switch (type)
 				{
-					case ViewType.CPU:
+					case HardwareType.CPU:
 						if (components.Count > 0)
 						{
 							progressBars[0].Value = double.Parse(component.Sensors[component.Sensors.Count - 1].Value);
@@ -99,7 +99,7 @@ namespace I243HardwareMonitor
 							            string.Format("{0:0.00}", Double.Parse(component.Sensors[component.Sensors.Count - 1].Value)) + "%";
 						}
 						break;
-					case ViewType.GPU:
+					case HardwareType.GPU:
 						if (components.Count > 0)
 						{
 							mainSensor = getSensorWithType("Temperature");
@@ -107,7 +107,7 @@ namespace I243HardwareMonitor
 							progressBars[0].Value = double.Parse(mainSensor.Value);
 						}
 						break;
-					case ViewType.HDD:
+					case HardwareType.HDD:
 						if (components.Count > 0)
 						{
 							mainSensor = getSensorWithType("Used");
@@ -115,7 +115,7 @@ namespace I243HardwareMonitor
 							progressBars[0].Value = double.Parse(mainSensor.Value);
 						}
 				break;
-					case ViewType.RAM:
+					case HardwareType.RAM:
 						if (components.Count > 0)
 						{
 							mainSensor = getSensorWithType("Used");
