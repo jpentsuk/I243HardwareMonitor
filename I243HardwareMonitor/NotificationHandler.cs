@@ -1,34 +1,38 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Xml;
 
 namespace I243HardwareMonitor
 {
-    class NotificationHandler
-    {
+	class NotificationHandler
+	{
 		public HardwareType type { get; }
 		public TextBox textBox { get; }
-	    private int currentValue;
-		public NotificationHandler(TextBox textbox, HardwareType type, int defaultValue)
-	    {
-		    textBox = textbox;
-		    this.type = type;
-		    currentValue = defaultValue;
-	    }
+		private int currentValue;
 
-	    public bool TryAndUpdateNotificationValue()
-	    {
-		    string value = textBox.Text;
-		    int result;
-		    bool wasValueChangeSuccessful = int.TryParse(value, out result);
-		    currentValue = result;
+		public NotificationHandler(TextBox textbox, HardwareType type, int defaultValue)
+		{
+			textBox = textbox;
+			this.type = type;
+			currentValue = defaultValue;
+		}
+
+		public bool TryAndUpdateNotificationValue()
+		{
+			string value = textBox.Text;
+			int result;
+			bool wasValueChangeSuccessful = int.TryParse(value, out result);
+			currentValue = result;
+			createToast();
 			Debug.WriteLine("Notification value: " + currentValue);
-		    return wasValueChangeSuccessful;
-	    }
-    }
+			return wasValueChangeSuccessful;
+		}
+
+		private void createToast()
+		{
+
+		}
+	}
 }
