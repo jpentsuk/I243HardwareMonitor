@@ -1,7 +1,6 @@
-﻿CREATE TABLE [dbo].[CPU]
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [UsersID] INT NOT NULL, 
-    [TotalClock] FLOAT NULL, 
-    CONSTRAINT [FK_CPU_ToUsers] FOREIGN KEY (UsersID) REFERENCES Users(UsersID)
-)
+﻿CREATE TABLE [dbo].[CPU] (
+    [Id]         INT IDENTITY (1, 1) NOT NULL,
+    [TotalClock] INT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
