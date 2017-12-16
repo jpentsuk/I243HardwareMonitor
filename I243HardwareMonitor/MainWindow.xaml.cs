@@ -33,18 +33,22 @@ namespace I243HardwareMonitor
 		private List<UserControlMainView> userControls;
 		private List<NotificationHandler> notificationHandlers;
 
-        public String connectionString = ConfigurationManager.ConnectionStrings["I243HardwareMonitor.Properties.Settings.MonitoringDataConnectionString"].ConnectionString;
+		public String connectionString = ConfigurationManager.ConnectionStrings["I243HardwareMonitor.Properties.Settings.MonitoringDataConnectionString"].ConnectionString;
         public SqlConnection connection = new SqlConnection();
+
+		private TextBox CpuNotificationSetting;
 
 		public MainWindow()
 		{
 			this.hardware = new HardwareInfo();
 			Debug.WriteLine(hardware.ToString());
 			this.userControls = new List<UserControlMainView>();
+			this.notificationHandlers = new List<NotificationHandler>();
 			this.timer = new DispatcherTimer();
 			InitializeComponent();
 			createMainUserControls();
 			initNotificationHandlers();
+			CpuNotificationSetting = tb_cpu_temp_warning;
 			StartTimer();
 		}
 
@@ -63,7 +67,7 @@ namespace I243HardwareMonitor
 					{
 						if (!handler.TryAndUpdateNotificationValue())
 						{
-							handler.textBox.Text = "100";
+							handler.textBox.Text = "";
 						}
 					}
 				}
