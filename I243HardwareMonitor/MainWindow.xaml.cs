@@ -235,18 +235,18 @@ namespace I243HardwareMonitor
         {
             HardwareComponent CPU = hardware.CPUs[0];
             double CpuTotalLoad = double.Parse(CPU.Sensors[CPU.Sensors.Count - 1].Value);
-            int CpuTotalLoadRounded = (int)Math.Round(CpuTotalLoad, 2);
-
+            
             connection = new SqlConnection(connectionString);
 
-            String query = "INSERT INTO CPU (TotalClock) values('" + CpuTotalLoadRounded + "') ;";
-            SqlCommand command = new SqlCommand(query, connection);
-
+            SqlCommand cmd = new SqlCommand("INSERT INTO CPU (TotalClock) values( @CpuTotalLoad)", connection);
+            cmd.Parameters.Add(new SqlParameter("@CpuTotalLoad", CpuTotalLoad));
+            
+      
             SqlDataReader datareader;
             try
             {
                 connection.Open();
-                datareader = command.ExecuteReader();
+                datareader = cmd.ExecuteReader();
             }
             catch (Exception ex)
             {
