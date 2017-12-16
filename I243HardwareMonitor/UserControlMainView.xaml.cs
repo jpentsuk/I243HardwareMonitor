@@ -104,9 +104,10 @@ namespace I243HardwareMonitor
 						{
 							mainSensor = getSensorWithType("Temperature");
 							labelInfo = mainSensor.Type + ": " + mainSensor.Value;
-							progressBars[0].Value = double.Parse(mainSensor.Value);
-						}
-						break;
+                            //progressBars[0].Value = double.Parse(mainSensor.Value);
+                            // TODO: Input string was not in a correct format 
+                        }
+                        break;
 					case HardwareType.HDD:
 						if (components.Count > 0)
 						{

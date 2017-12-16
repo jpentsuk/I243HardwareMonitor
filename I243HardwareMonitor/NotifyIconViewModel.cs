@@ -4,6 +4,8 @@ using System.Windows.Input;
 
 namespace I243HardwareMonitor
 {
+    //Solution for this class is largely based on example given in https://www.codeproject.com/Articles/36468/WPF-NotifyIcon
+    //This is the suggested method by the maker of the NotifyIcon add-on used in this project.
     public class NotifyIconViewModel
     {
 

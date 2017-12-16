@@ -187,11 +187,12 @@ namespace I243HardwareMonitor
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            
-
-    
+            }    
         }
-        
+
+        private void btn_exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

@@ -8,12 +8,13 @@
         <MenuItem Header="Open Main Window" Command="{Binding ShowWindowCommand}"/>
         <MenuItem Header="Hide Main Window" Command="{Binding HideWindowCommand}"/>
         <Separator/>
-        <MenuItem Header="Exit Applcation" Command="{Binding ExitProgramCommand}"/>
+        <MenuItem Header="Exit Application" Command="{Binding ExitProgramCommand}"/>
     </ContextMenu>
 
+    <!--Icon is from https://www.iconfinder.com/-->
     <tb:TaskbarIcon x:Key="NotifyIcon"
-                    IconSource="/Resources/fan.ico"
-                    ToolTipText="Hardware Monitor"
+                    IconSource="/Resources/fan.ico" 
+                    ToolTipText="Hardware Monitoring"
                     DoubleClickCommand="{Binding ShowWindowCommand}"
                     ContextMenu="{StaticResource SysTrayMenu}">
         <tb:TaskbarIcon.DataContext>

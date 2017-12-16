@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using Hardcodet.Wpf.TaskbarNotification;
 
 namespace I243HardwareMonitor
@@ -25,7 +19,6 @@ namespace I243HardwareMonitor
         /// <summary>
         /// Icon will be gone automatically, but this is supposedly cleaner
         /// </summary>
-        /// <param name="e"></param>
         protected override void OnExit(ExitEventArgs e)
         {
             _notifyIcon.Dispose();
