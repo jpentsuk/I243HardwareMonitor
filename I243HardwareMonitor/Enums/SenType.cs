@@ -3,7 +3,8 @@
 	public enum SenType
 	{
 		None = 0,
-		Total = 1,
-		Temp = 2
+		Load = 1,
+		Temp = 2,
+		Total = 3
 	}
 }

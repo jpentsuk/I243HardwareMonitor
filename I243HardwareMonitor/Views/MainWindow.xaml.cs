@@ -75,13 +75,13 @@ namespace I243HardwareMonitor.Views
         {
             foreach (HardwareType type in Enum.GetValues(typeof(HardwareType)))
             {
-	            if (type != HardwareType.CPU)
+	            if (type != HardwareType.CPU && type != HardwareType.GPU)
 	            {
 		            UserControlMainView control = new UserControlMainView(hardware, type);
 		            userControls.Add(control);
 		            mainViewStackPanel.Children.Add(control);
 	            }
-	            else
+	            else if (type == HardwareType.CPU)
 	            {
 		            foreach (SenType sensorType in Enum.GetValues(typeof(SenType)))
 		            {
@@ -101,6 +101,28 @@ namespace I243HardwareMonitor.Views
 							}
 			            }
 		            }
+				}
+	            else if (type == HardwareType.GPU)
+	            {
+					foreach (SenType sensorType in Enum.GetValues(typeof(SenType)))
+					{
+						if (sensorType != SenType.None)
+						{
+							bool sensorValueExists = false;
+							foreach (HardwareComponent gpu in hardware.GPUs)
+							{
+								HardwareSensor sensor = gpu.getSensorWithType("GPU", sensorType.ToString(), true);
+								Debug.WriteLine("GPU" + sensorType.ToString());
+								sensorValueExists = (sensor.Value != "null");
+							}
+							if (sensorValueExists)
+							{
+								UserControlMainView control = new UserControlMainView(hardware, type, sensorType);
+								userControls.Add(control);
+								mainViewStackPanel.Children.Add(control);
+							}
+						}
+					}
 				}
             }
         }

@@ -28,19 +28,19 @@ namespace I243HardwareMonitor.Hardware
 			SubHardware.Add(component);
 		}
 
-		public HardwareSensor getSensorWithType(String type)
+		public HardwareSensor getSensorWithType(String name, String sensorType = "null", bool typeNeeded = false)
 		{
-				foreach (HardwareSensor sensor in Sensors)
+			foreach (HardwareSensor sensor in Sensors)
+			{
+				if (typeNeeded && sensor.Name.Contains(name) && sensor.Type.Contains(sensorType))
 				{
-					if (sensor.Type.Contains(type))
-					{
-						return sensor;
-					}
-					if (sensor.Name.Contains(type))
-					{
-						return sensor;
-					}
+					return sensor;
 				}
+				if (!typeNeeded && sensor.Name.Contains(name))
+				{
+					return sensor;
+				}
+			}
 			return new HardwareSensor("null", "null", "null");
 		}
 
