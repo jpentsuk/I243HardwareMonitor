@@ -12,6 +12,7 @@ namespace I243HardwareMonitor
 		public List<HardwareSensor> Sensors { get; }
 		private List<HardwareComponent> SubHardware { get; }
 		private int sensorCount, subHardwareCount;
+
 		public HardwareComponent(String name, String type, String identifier) : base(name, type)
 		{
 			this.Identifier = identifier;
@@ -28,6 +29,7 @@ namespace I243HardwareMonitor
 		{
 			SubHardware.Add(component);
 		}
+
 		public HardwareSensor getSensorWithType(String type)
 		{
 				foreach (HardwareSensor sensor in Sensors)
@@ -57,7 +59,6 @@ namespace I243HardwareMonitor
 					combinedInfo += "Sensor: " + Sensors[i].Name + " - " + Sensors[i].Type + " - " + Sensors[i].Value + Environment.NewLine;
 				}
 			}
-
 			if (subHardwareCount > 0)
 			{
 				for (int u = 0; u < subHardwareCount; u++)
@@ -65,7 +66,6 @@ namespace I243HardwareMonitor
 					combinedInfo += SubHardware[u].ToString();
 				}
 			}
-
 			return combinedInfo;
 		}
 	}

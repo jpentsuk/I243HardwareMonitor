@@ -26,6 +26,7 @@ namespace I243HardwareMonitor
 		private HardwareInfo hardware;
 		private List<HardwareComponent> components;
 		private List<ProgressBar> progressBars;
+
 		public UserControlMainView(HardwareInfo hardware, HardwareType type)
 		{
 			this.components = new List<HardwareComponent>();
@@ -82,6 +83,7 @@ namespace I243HardwareMonitor
 					break;
 			}
 		}
+
 		public void UpdateLabelInfo()
 		{
 			String labelInfo = String.Empty;
@@ -154,7 +156,5 @@ namespace I243HardwareMonitor
 				
 			}
 		}
-
-
 	}
 }

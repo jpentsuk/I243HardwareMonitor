@@ -79,6 +79,7 @@ namespace I243HardwareMonitor
                 }
             }
         }
+
         private void createMainUserControls()
         {
             foreach (HardwareType type in Enum.GetValues(typeof(HardwareType)))
@@ -104,7 +105,6 @@ namespace I243HardwareMonitor
             {
                 control.UpdateLabelInfo();
             }
-
         }
 
         private void chc_viewToggle_Changed(object sender, RoutedEventArgs e)
@@ -218,7 +218,7 @@ namespace I243HardwareMonitor
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable cpu = new DataTable("cpu");
 
-            adapter.Fill(cpu);
+			adapter.Fill(cpu);
 
             dgd_cpu.ItemsSource = cpu.DefaultView;
             adapter.Update(cpu);
@@ -240,7 +240,6 @@ namespace I243HardwareMonitor
 
             SqlCommand cmd = new SqlCommand("INSERT INTO CPU (TotalClock) values( @CpuTotalLoad)", connection);
             cmd.Parameters.Add(new SqlParameter("@CpuTotalLoad", CpuTotalLoad));
-            
       
             SqlDataReader datareader;
             try
