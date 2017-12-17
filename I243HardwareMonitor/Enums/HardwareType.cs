@@ -1,4 +1,4 @@
-﻿namespace I243HardwareMonitor
+﻿namespace I243HardwareMonitor.Enums
 {
 	public enum HardwareType
 	{

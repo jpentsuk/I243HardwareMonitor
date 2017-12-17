@@ -43,7 +43,7 @@ namespace I243HardwareMonitor
                     CanExecuteFunc = () => Application.Current.MainWindow == null,
                     CommandAction = () =>
                     {
-                        Application.Current.MainWindow = new MainWindow();
+                        Application.Current.MainWindow = new Views.MainWindow();
                         Application.Current.MainWindow.Show();
                     }
                 };

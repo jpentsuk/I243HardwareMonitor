@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml;
+using I243HardwareMonitor.Enums;
 
 namespace I243HardwareMonitor
 {

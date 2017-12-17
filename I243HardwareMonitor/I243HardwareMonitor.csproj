@@ -81,15 +81,15 @@
     </ApplicationDefinition>
     <Compile Include="NotificationHandler.cs" />
     <Compile Include="NotifyIconViewModel.cs" />
-    <Compile Include="UserControlMainView.xaml.cs">
+    <Compile Include="Views\UserControlMainView.xaml.cs">
       <DependentUpon>UserControlMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HardwareType.cs" />
-    <Page Include="Help.xaml">
+    <Compile Include="Enums\HardwareType.cs" />
+    <Page Include="Views\Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -97,15 +97,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HardwareInfo.cs" />
-    <Compile Include="Component.cs" />
-    <Compile Include="HardwareComponent.cs" />
-    <Compile Include="ComputerHardware.cs" />
-    <Compile Include="HardwareSensor.cs" />
-    <Compile Include="Help.xaml.cs">
+    <Compile Include="Hardware\HardwareInfo.cs" />
+    <Compile Include="Hardware\Component.cs" />
+    <Compile Include="Hardware\HardwareComponent.cs" />
+    <Compile Include="Hardware\ComputerHardware.cs" />
+    <Compile Include="Hardware\HardwareSensor.cs" />
+    <Compile Include="Views\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -113,7 +113,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlMainView.xaml">
+    <Page Include="Views\UserControlMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

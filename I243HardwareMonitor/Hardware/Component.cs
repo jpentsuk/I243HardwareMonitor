@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace I243HardwareMonitor
+namespace I243HardwareMonitor.Hardware
 {
 	public class Component
 	{
