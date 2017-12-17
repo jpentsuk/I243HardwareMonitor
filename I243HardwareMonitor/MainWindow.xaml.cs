@@ -256,14 +256,24 @@ namespace I243HardwareMonitor
 
         private void SaveUserDataIntoTable()
         {
-            string cpuinfo = this.hardware.CPUs[0].Name;
-            string gpuinfo = "";
-            string hddinfo = this.hardware.HDDs[0].Name;
-            string raminfo = this.hardware.RAM.Name;
-
+	        string cpuInfo, gpuInfo, hddInfo = string.Empty;
+	        string ramInfo = hardware.RAM.Name;
+	        foreach (HardwareComponent cpu in hardware.CPUs)
+	        {
+		        cpuInfo += cpu.Name;
+			}
+	        foreach (HardwareComponent gpu in hardware.GPUs)
+	        {
+		        gpuInfo += gpu.Name;
+	        }
+	        foreach (HardwareComponent hdd in hardware.HDDs)
+	        {
+		        hddInfo += hdd.Name;
+	        }
+	        
             connection = new SqlConnection(connectionString);
 
-            string query = "INSERT INTO Users (CPU, GPU, HDD, RAM) values('" + cpuinfo + "','" + gpuinfo + "','" + hddinfo + "','" + raminfo + "') ;";
+            string query = "INSERT INTO Users (CPU, GPU, HDD, RAM) values('" + cpuInfo + "','" + gpuInfo + "','" + hddInfo + "','" + ramInfo + "') ;";
             SqlCommand command = new SqlCommand(query, connection);
 
             SqlDataReader datareader;
