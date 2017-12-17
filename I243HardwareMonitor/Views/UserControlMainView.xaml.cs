@@ -88,7 +88,7 @@ namespace I243HardwareMonitor.Views
 									case SenType.Temp:
 										mainSensor = component.getSensorWithType("Temp");
 										progressBars[0].Value = double.Parse(mainSensor.Value);
-										labelInfo = "Temp " + mainSensor.Type + ": " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "C";
+										labelInfo = "Temperature: " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "C";
 										break;
 									case SenType.Total:
 										mainSensor = component.getSensorWithType("Total");
