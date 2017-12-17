@@ -256,10 +256,10 @@ namespace I243HardwareMonitor
 
         private void SaveUserDataIntoTable()
         {
-            string cpuinfo = this.hardware.CPUs[0].Name.ToString();
+            string cpuinfo = this.hardware.CPUs[0].Name;
             string gpuinfo = "";
-            string hddinfo = this.hardware.HDDs[0].Name.ToString();
-            string raminfo = this.hardware.RAM.Name.ToString();
+            string hddinfo = this.hardware.HDDs[0].Name;
+            string raminfo = this.hardware.RAM.Name;
 
             connection = new SqlConnection(connectionString);
 
