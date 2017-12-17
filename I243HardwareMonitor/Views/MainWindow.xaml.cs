@@ -224,6 +224,9 @@ namespace I243HardwareMonitor.Views
         {
             // get cpu data from CPU table into Grid2
             askcpu();
+            askgpu();
+            askram();
+            askhdd();
             // get Users data from Users table into Grid1
             connection = new SqlConnection(connectionString);
             connection.Open();
@@ -287,6 +290,127 @@ namespace I243HardwareMonitor.Views
             }
         }
 
+        private void SaveGPUData()
+        {
+            HardwareComponent GPU = hardware.GPUs[0];
+            double GpuTotalLoad = double.Parse(GPU.Sensors[GPU.Sensors.Count - 1].Value);
+
+            connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO GPU (TotalClock) values( @GpuTotalLoad)", connection);
+            cmd.Parameters.Add(new SqlParameter("@GpuTotalLoad", GpuTotalLoad));
+
+            SqlDataReader datareader;
+            try
+            {
+                connection.Open();
+                datareader = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void askgpu()
+        {
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            String query = "SELECT * FROM GPU";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable gpu = new DataTable("gpu");
+
+            adapter.Fill(gpu);
+
+            dgd_gpu.ItemsSource = gpu.DefaultView;
+            adapter.Update(gpu);
+        }
+
+        private void askram()
+        {
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            String query = "SELECT * FROM RAM";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable ram = new DataTable("ram");
+
+            adapter.Fill(ram);
+
+            dgd_ram.ItemsSource = ram.DefaultView;
+            adapter.Update(ram);
+        }
+
+        private void SaveRAMData()
+        {
+            HardwareSensor ramLoadSensor = hardware.RAM.getSensorWithType("Memory", "Load", true);
+            double RamInUse = double.Parse(ramLoadSensor.Value);
+
+            connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO RAM (InUse) values( @RamInUse)", connection);
+            cmd.Parameters.Add(new SqlParameter("@RamInUse", RamInUse));
+
+            SqlDataReader datareader;
+            try
+            {
+                connection.Open();
+                datareader = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SaveHDDData()
+        {
+            HardwareSensor mainSensor = hardware.HDDs[0].getSensorWithType("Used", "Load", true);
+            double Load = double.Parse(mainSensor.Value);
+
+            connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO HDD (Load) values( @Load)", connection);
+            cmd.Parameters.Add(new SqlParameter("@Load", Load));
+
+            SqlDataReader datareader;
+            try
+            {
+                connection.Open();
+                datareader = cmd.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void askhdd()
+        {
+            connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            String query = "SELECT * FROM HDD";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable hdd = new DataTable("hdd");
+
+            adapter.Fill(hdd);
+
+            dgd_hdd.ItemsSource = hdd.DefaultView;
+            adapter.Update(hdd);
+        }
+
+
         private void SaveUserDataIntoTable()
         {
 	        string cpuInfo = string.Empty;
@@ -335,6 +459,9 @@ namespace I243HardwareMonitor.Views
         private void AddDataIntoDatabase(object sender, EventArgs e)
         {
             SaveCPUData();
+            //SaveGPUData();
+            SaveRAMData();
+            SaveHDDData();
         }
     }
 }
