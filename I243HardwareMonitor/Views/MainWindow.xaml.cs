@@ -7,7 +7,9 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using I243HardwareMonitor.Enums;
 using I243HardwareMonitor.Hardware;
+using OpenHardwareMonitor.Hardware;
 using HardwareType = I243HardwareMonitor.Enums.HardwareType;
 
 namespace I243HardwareMonitor.Views
@@ -73,9 +75,33 @@ namespace I243HardwareMonitor.Views
         {
             foreach (HardwareType type in Enum.GetValues(typeof(HardwareType)))
             {
-                UserControlMainView control = new UserControlMainView(hardware, type);
-                userControls.Add(control);
-                mainViewStackPanel.Children.Add(control);
+	            if (type != HardwareType.CPU)
+	            {
+		            UserControlMainView control = new UserControlMainView(hardware, type);
+		            userControls.Add(control);
+		            mainViewStackPanel.Children.Add(control);
+	            }
+	            else
+	            {
+		            foreach (SenType sensorType in Enum.GetValues(typeof(SenType)))
+		            {
+			            if (sensorType != SenType.None)
+			            {
+				            bool sensorValueExists = false;
+				            foreach (HardwareComponent cpu in hardware.CPUs)
+				            {
+					            HardwareSensor sensor = cpu.getSensorWithType(sensorType.ToString());
+					            sensorValueExists = (sensor.Value != "null");
+				            }
+				            if (sensorValueExists)
+				            {
+								UserControlMainView control = new UserControlMainView(hardware, type, sensorType);
+					            userControls.Add(control);
+					            mainViewStackPanel.Children.Add(control);
+							}
+			            }
+		            }
+				}
             }
         }
 

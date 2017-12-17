@@ -16,13 +16,15 @@ namespace I243HardwareMonitor.Views
 		private HardwareInfo hardware;
 		private List<HardwareComponent> components;
 		private List<ProgressBar> progressBars;
+		private SenType targetSensorType;
 
-		public UserControlMainView(HardwareInfo hardware, HardwareType type)
+		public UserControlMainView(HardwareInfo hardware, HardwareType type, SenType sensorType = SenType.None)
 		{
 			this.components = new List<HardwareComponent>();
 			this.progressBars = new List<ProgressBar>();
 			this.type = type;
 			this.hardware = hardware;
+			this.targetSensorType = sensorType;
 			setComponent();
 			InitializeComponent();
 			foreach (HardwareComponent component in components)
@@ -79,9 +81,22 @@ namespace I243HardwareMonitor.Views
 					case HardwareType.CPU:
 						if (components.Count > 0)
 						{
-							mainSensor = component.getSensorWithType("Total");
-							progressBars[0].Value = double.Parse(mainSensor.Value);
-							labelInfo = "Total " + mainSensor.Type + ": " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "%";	
+							if (targetSensorType != SenType.None)
+							{
+								switch (targetSensorType)
+								{
+									case SenType.Temp:
+										mainSensor = component.getSensorWithType("Temp");
+										progressBars[0].Value = double.Parse(mainSensor.Value);
+										labelInfo = "Temp " + mainSensor.Type + ": " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "C";
+										break;
+									case SenType.Total:
+										mainSensor = component.getSensorWithType("Total");
+										progressBars[0].Value = double.Parse(mainSensor.Value);
+										labelInfo = "Total " + mainSensor.Type + ": " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "%";
+										break;
+								}
+							}
 						}
 						break;
 					case HardwareType.GPU:

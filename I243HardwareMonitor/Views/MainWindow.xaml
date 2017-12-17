@@ -53,7 +53,7 @@
                         <StackPanel Name="stc_preferences">
                             <Label Name="label_settings_general"  Content="General tab settings: "></Label>
 
-                            <CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU load" IsChecked="True" Click="chc_viewToggle_Changed"/>
+                            <CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU load and temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
                             <CheckBox Margin="5, 1, 5, 0" Name="chc_gpu" Content="Show GPU temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
                             <CheckBox Margin="5, 1, 5, 0" Name="chc_ram" Content="Show RAM load" IsChecked="True" Click="chc_viewToggle_Changed"/>
                             <CheckBox Margin="5, 1, 5, 0" Name="chc_hdd" Content="Show HDD used" IsChecked="True" Click="chc_viewToggle_Changed"/>
