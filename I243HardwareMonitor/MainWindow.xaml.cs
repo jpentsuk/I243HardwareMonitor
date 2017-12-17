@@ -60,7 +60,7 @@ namespace I243HardwareMonitor
 
         private void initNotificationHandlers()
         {
-            notificationHandlers.Add(new NotificationHandler(tb_cpu_temp_warning, HardwareType.CPU, 75));
+            notificationHandlers.Add(new NotificationHandler(CpuNotificationSetting, HardwareType.CPU, 75));
         }
 
         private void updateNotificationSettings(object sender, TextChangedEventArgs args)
