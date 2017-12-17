@@ -256,7 +256,9 @@ namespace I243HardwareMonitor
 
         private void SaveUserDataIntoTable()
         {
-	        string cpuInfo, gpuInfo, hddInfo = string.Empty;
+	        string cpuInfo = string.Empty;
+			string gpuInfo = string.Empty;
+			string hddInfo = string.Empty;
 	        string ramInfo = hardware.RAM.Name;
 	        foreach (HardwareComponent cpu in hardware.CPUs)
 	        {
