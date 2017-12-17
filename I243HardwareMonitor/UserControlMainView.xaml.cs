@@ -39,14 +39,7 @@ namespace I243HardwareMonitor
 			{
 				componentName.Text = type + ": " + component.Name;
 			}
-			ProgressBar loadProgressBar = new ProgressBar();
-			loadProgressBar.Margin = new Thickness(10, 0, 10, 5);
-			loadProgressBar.Visibility = Visibility.Visible;
-			loadProgressBar.Height = 25;
-			loadProgressBar.Foreground = System.Windows.Media.Brushes.LawnGreen;
-			loadProgressBar.Background = System.Windows.Media.Brushes.White;
-			loadProgressBar.Maximum = 110;
-			loadProgressBar.Value = 0;
+			ProgressBar loadProgressBar = initProgressBar();
 			containerPanel.Children.Add(loadProgressBar);
 			progressBars.Add(loadProgressBar);
 			if (type == HardwareType.RAM || type == HardwareType.HDD)
@@ -133,6 +126,19 @@ namespace I243HardwareMonitor
 			}
 			lbl_main_view_info.Content = labelInfo;
 			MatchProgressBarColorToLoad();
+		}
+
+		private ProgressBar initProgressBar()
+		{
+			ProgressBar progressBar = new ProgressBar();
+			progressBar.Margin = new Thickness(10, 0, 10, 5);
+			progressBar.Visibility = Visibility.Visible;
+			progressBar.Height = 25;
+			progressBar.Foreground = System.Windows.Media.Brushes.LawnGreen;
+			progressBar.Background = System.Windows.Media.Brushes.White;
+			progressBar.Maximum = 110;
+			progressBar.Value = 0;
+			return progressBar;
 		}
 
 		private void MatchProgressBarColorToLoad()
