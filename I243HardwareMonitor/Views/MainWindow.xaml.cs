@@ -29,8 +29,6 @@ namespace I243HardwareMonitor.Views
         public String connectionString = ConfigurationManager.ConnectionStrings["I243HardwareMonitor.Properties.Settings.MonitoringDataConnectionString"].ConnectionString;
         public SqlConnection connection = new SqlConnection();
 
-        private TextBox CpuNotificationSetting;
-
         public MainWindow()
         {
             this.hardware = new HardwareInfo();
@@ -43,7 +41,6 @@ namespace I243HardwareMonitor.Views
             InitializeComponent();
             createMainUserControls();
             initNotificationHandlers();
-            CpuNotificationSetting = tb_cpu_temp_warning;
             //saving user hardware data into database table Users
             SaveUserDataIntoTable();
             StartTimer();
@@ -51,7 +48,7 @@ namespace I243HardwareMonitor.Views
 
         private void initNotificationHandlers()
         {
-            notificationHandlers.Add(new NotificationHandler(CpuNotificationSetting, HardwareType.CPU, 75));
+            notificationHandlers.Add(new NotificationHandler(tb_cpu_temp_warning, HardwareType.CPU, 75));
         }
 
         private void updateNotificationSettings(object sender, TextChangedEventArgs args)
