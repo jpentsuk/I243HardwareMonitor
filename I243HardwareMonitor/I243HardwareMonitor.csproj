@@ -79,6 +79,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Enums\SenType.cs" />
     <Compile Include="NotificationHandler.cs" />
     <Compile Include="NotifyIconViewModel.cs" />
     <Compile Include="Views\UserControlMainView.xaml.cs">
