@@ -28,6 +28,21 @@ namespace I243HardwareMonitor
 		{
 			SubHardware.Add(component);
 		}
+		public HardwareSensor getSensorWithType(String type)
+		{
+				foreach (HardwareSensor sensor in Sensors)
+				{
+					if (sensor.Type.Contains(type))
+					{
+						return sensor;
+					}
+					if (sensor.Name.Contains(type))
+					{
+						return sensor;
+					}
+				}
+			return new HardwareSensor("null", "null", "null");
+		}
 
 		public override string ToString()
 		{

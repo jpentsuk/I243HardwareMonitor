@@ -94,36 +94,37 @@ namespace I243HardwareMonitor
 					case HardwareType.CPU:
 						if (components.Count > 0)
 						{
-							progressBars[0].Value = double.Parse(component.Sensors[component.Sensors.Count - 1].Value);
-							labelInfo = "Total " + component.Sensors[component.Sensors.Count - 1].Type + ": " +
-							            string.Format("{0:0.00}", Double.Parse(component.Sensors[component.Sensors.Count - 1].Value)) + "%";
+							mainSensor = component.getSensorWithType("Total");
+							progressBars[0].Value = double.Parse(mainSensor.Value);
+							labelInfo = "Total " + mainSensor.Type + ": " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "%";	
 						}
 						break;
 					case HardwareType.GPU:
 						if (components.Count > 0)
 						{
-							mainSensor = getSensorWithType("Temperature");
-							labelInfo = mainSensor.Type + ": " + mainSensor.Value;
-                            //progressBars[0].Value = double.Parse(mainSensor.Value);
-                            // TODO: Input string was not in a correct format 
+							mainSensor = component.getSensorWithType("Temperature");
+							labelInfo = mainSensor.Type + ": " + mainSensor.Value;		
+                            progressBars[0].Value = double.Parse(mainSensor.Value);
                         }
                         break;
 					case HardwareType.HDD:
 						if (components.Count > 0)
 						{
-							mainSensor = getSensorWithType("Used");
-							labelInfo ="Used space: " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "%";
+							mainSensor = component.getSensorWithType("Used");
+							labelInfo = "Used space: " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "%";
 							progressBars[0].Value = double.Parse(mainSensor.Value);
 						}
-				break;
+						break;
 					case HardwareType.RAM:
 						if (components.Count > 0)
 						{
-							mainSensor = getSensorWithType("Used");
-							HardwareSensor loadSensor = getSensorWithType("Load");
-							String availableMemory = string.Format("{0:0.0}", double.Parse(mainSensor.Value) / double.Parse(loadSensor.Value) * 100);
-							labelInfo = "In use : " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "GB/" + availableMemory + "GB (" + string.Format("{0:0.00}", Double.Parse(loadSensor.Value)) + "%)";
-							progressBars[0].Value = double.Parse(loadSensor.Value);
+							mainSensor = component.getSensorWithType("Used");
+							HardwareSensor loadSensor = component.getSensorWithType("Load");
+							String availableMemory =
+								string.Format("{0:0.0}", double.Parse(mainSensor.Value) / double.Parse(loadSensor.Value) * 100);
+							labelInfo = "In use : " + string.Format("{0:0.00}", Double.Parse(mainSensor.Value)) + "GB/" + availableMemory +
+								        "GB (" + string.Format("{0:0.00}", Double.Parse(loadSensor.Value)) + "%)";
+							progressBars[0].Value = double.Parse(loadSensor.Value);	
 						}
 						break;
 				}
@@ -154,23 +155,6 @@ namespace I243HardwareMonitor
 			}
 		}
 
-		private HardwareSensor getSensorWithType(String type)
-		{		
-			foreach (HardwareComponent comp in components)
-			{
-				foreach (HardwareSensor sensor in comp.Sensors)
-				{
-					if (sensor.Type.Contains(type))
-					{
-						return sensor;
-					}
-					if (sensor.Name.Contains(type))
-					{
-						return sensor;
-					}
-				}
-			}
-			return new HardwareSensor("null", "null", "null");
-		}
+
 	}
 }
