@@ -39,7 +39,7 @@ namespace I243HardwareMonitor.Hardware
 		private HardwareComponent MapHardwareComponent(OpenHardwareMonitor.Hardware.IHardware hardwareComponent)
 		{
 			String hardwareComponentName, hardwareComponentType, hardwareComponentIdentifier;
-			hardwareComponentName = hardwareComponent.Name.ToString();
+			hardwareComponentName = hardwareComponent.Name;
 			hardwareComponentType = hardwareComponent.HardwareType.ToString();
 			hardwareComponentIdentifier = hardwareComponent.Identifier.ToString();
 			HardwareComponent component = new HardwareComponent(hardwareComponentName, hardwareComponentType, hardwareComponentIdentifier);
