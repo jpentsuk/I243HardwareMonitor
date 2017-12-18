@@ -81,7 +81,9 @@
     </ApplicationDefinition>
     <Compile Include="Enums\SenType.cs" />
     <Compile Include="NotificationHandler.cs" />
-    <Compile Include="NotifyIconViewModel.cs" />
+    <Compile Include="ViewModels\ButtonControls.cs" />
+    <Compile Include="ViewModels\DelegateCommand.cs" />
+    <Compile Include="ViewModels\NotifyIconViewModel.cs" />
     <Compile Include="Views\UserControlMainView.xaml.cs">
       <DependentUpon>UserControlMainView.xaml</DependentUpon>
     </Compile>
