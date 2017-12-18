@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:I243HardwareMonitor"
+        xmlns:local="clr-namespace:I243HardwareMonitor.ViewModels"
         mc:Ignorable="d"
         Title="Hardware Monitor" Height="475" Width="500">
     <!-- Added window opening animation. Source: https://stackoverflow.com/questions/754739/how-to-animate-a-window -->
@@ -73,7 +73,11 @@
                         </StackPanel>
                     </Border>
                     <StackPanel>
-                        <Button Content="Exit" Name="btn_exit" Width="60" HorizontalAlignment="Right" Margin="7" Click="btn_exit_Click"/>
+                        <Button Content="Exit" Name="btn_exit" Width="60" HorizontalAlignment="Right" Margin="7" 
+                                Command="{Binding ExitProgramCommand}"/>
+                        <StackPanel.DataContext>
+                            <local:NotifyIconViewModel/>
+                        </StackPanel.DataContext>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

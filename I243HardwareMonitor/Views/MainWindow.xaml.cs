@@ -215,10 +215,6 @@ namespace I243HardwareMonitor.Views
             MessageBox.Show("Saving Data Started");
         }
 
-        private void btn_exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
 
         private void btn_showdata_Click(object sender, RoutedEventArgs e)
         {
