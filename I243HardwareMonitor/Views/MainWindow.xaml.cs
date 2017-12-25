@@ -9,7 +9,6 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using I243HardwareMonitor.Enums;
 using I243HardwareMonitor.Hardware;
-using OpenHardwareMonitor.Hardware;
 using HardwareType = I243HardwareMonitor.Enums.HardwareType;
 
 namespace I243HardwareMonitor.Views
@@ -177,12 +176,6 @@ namespace I243HardwareMonitor.Views
             {
                 mainViewStackPanel.Children.Remove(control);
             }
-        }
-
-        private void btn_Help_Click(object sender, RoutedEventArgs e)
-        {
-            var helpwindow = new Help();
-            helpwindow.Show();
         }
 
         private void btn_showusers_Click(object sender, RoutedEventArgs e)
