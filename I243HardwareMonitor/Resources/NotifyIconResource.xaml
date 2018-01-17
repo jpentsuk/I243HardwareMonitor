@@ -4,6 +4,7 @@
                     xmlns:local="clr-namespace:I243HardwareMonitor.ViewModels"
                     x:Class="I234HardwareMonitor.NotifyIconViewModel">
 
+    <!--Code is from example from https://www.codeproject.com/Articles/36468/WPF-NotifyIcon -->
     <ContextMenu x:Shared="false" x:Key="SysTrayMenu">
         <MenuItem Header="Open Main Window" Command="{Binding ShowWindowCommand}"/>
         <MenuItem Header="Hide Main Window" Command="{Binding HideWindowCommand}"/>

@@ -8,7 +8,7 @@ namespace I243HardwareMonitor.ViewModels
     public class NotifyIconViewModel
     {   
         /// <summary>
-        /// Shows a window, if there isn't one open already. ICommand is mandatory to use button commands.
+        /// Shows big window, if there isn't one open already. ICommand is mandatory to use button commands.
         /// </summary>
         public ICommand ShowWindowCommand
         {
@@ -26,6 +26,9 @@ namespace I243HardwareMonitor.ViewModels
             }
         }
 
+        /// <summary>
+        /// Hides big window
+        /// </summary>
         public ICommand HideWindowCommand
         {
             get
@@ -38,6 +41,9 @@ namespace I243HardwareMonitor.ViewModels
             }
         }
 
+        /// <summary>
+        /// Closes application
+        /// </summary>
         public ICommand ExitProgramCommand
         {
             get

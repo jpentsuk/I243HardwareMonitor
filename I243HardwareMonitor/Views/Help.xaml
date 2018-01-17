@@ -20,7 +20,7 @@
         <TabControl>
             <TabItem Header="Overview">
                 <TextBlock Margin="28,31,22,28" TextWrapping="Wrap">
-                    With this application one can monitor his/her computer hardware. 
+                    With this application one can monitor their computer hardware. 
                     This includes CPU, GPU, RAM, HDD and motherboard information.
                     <LineBreak/>
                     <LineBreak/>
@@ -56,7 +56,7 @@
                     2) Run application in tray
                     <LineBreak/>
                     <LineBreak/>
-                    Click "minimize" button to minimize main program and let monitoring take place on background.
+                    Click "Close" button to minimize main program and let monitoring take place on background.
                     <LineBreak/>
                     <LineBreak/>
                     3) Show help
