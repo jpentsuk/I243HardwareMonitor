@@ -53,7 +53,7 @@ namespace I243HardwareMonitor.Views
 
         private void initNotificationHandlers()
         {
-            notificationHandlers.Add(new NotificationHandler(tb_cpu_temp_warning, HardwareType.CPU, 75));
+            notificationHandlers.Add(new NotificationHandler(tb_cpu_temp_warning, HardwareType.GPU, 20));
         }
 
         private void updateNotificationSettings(object sender, TextChangedEventArgs args)
@@ -148,6 +148,7 @@ namespace I243HardwareMonitor.Views
 
         private void chc_viewToggle_Changed(object sender, RoutedEventArgs e)
         {
+	        Logger.Write("User toggled a setting");
             foreach (UserControlMainView control in userControls)
             {
                 updateMainViewChildVisibility(control);
@@ -207,13 +208,11 @@ namespace I243HardwareMonitor.Views
             dgd_users.ItemsSource = null;
         }
 
-
         private void btn_savedata_Click(object sender, RoutedEventArgs e)
         {
             StartTimerForAddingData();
             MessageBox.Show("Saving Data Started");
         }
-
 
         private void btn_showdata_Click(object sender, RoutedEventArgs e)
         {
