@@ -10,11 +10,13 @@ namespace I243HardwareMonitor.Utility
 	{
 		public static void Write(String logText)
 		{
+			String currentDate = System.DateTime.Today.ToString("yy_dd_MM");
 			String logLine = String.Empty;
-			logLine += System.DateTime.Today.ToString("yy/dd/MM") + " - ";
+			String fileName = "log_" + currentDate + ".txt";
+			logLine += currentDate + " - ";
 			logLine += logText;
 			Debug.WriteLine(logLine);
-			File.AppendAllText("log.txt", logLine);
+			File.AppendAllText(fileName, logLine);
 		}
 	}
 }
