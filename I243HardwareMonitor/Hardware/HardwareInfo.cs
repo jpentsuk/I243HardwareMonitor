@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 
+/*
+ * HardwareInfo is the object that is referenced for getting hardware info
+ * Info contains hardware components, subwardware components and both of their sensors 
+*/
 namespace I243HardwareMonitor.Hardware
 {
 	public class HardwareInfo

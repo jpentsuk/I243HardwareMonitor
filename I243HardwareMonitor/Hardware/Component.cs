@@ -1,5 +1,9 @@
 ﻿using System;
 
+/* 
+ * Base class for all mapped hardware (and sub-hardware) components and hardware sensors
+*/
+
 namespace I243HardwareMonitor.Hardware
 {
 	public class Component
