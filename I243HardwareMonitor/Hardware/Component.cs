@@ -6,7 +6,7 @@
 
 namespace I243HardwareMonitor.Hardware
 {
-	public class Component
+	public abstract class Component
 	{
 		public String Name { get; }
 		public String Type { get; }
