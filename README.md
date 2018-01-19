@@ -10,12 +10,6 @@ The code can be cloned, compiled and run with Visual Studio.
 
 HardwareMonitor can only be run on Windows. It also requires Administrator rights to read hardware information.
 
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-
 ## Authors
 
 * **Joonas Ervald** - [PurpleBooth](https://github.com/PurpleBooth)
@@ -24,5 +18,5 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md]
+This project is licensed under the MIT License - see the (LICENSE.md)
 
