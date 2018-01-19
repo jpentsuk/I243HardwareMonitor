@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using I243HardwareMonitor.Enums;
 using I243HardwareMonitor.Hardware;
+using I243HardwareMonitor.Utility;
 using HardwareType = I243HardwareMonitor.Enums.HardwareType;
 
 namespace I243HardwareMonitor.Views
@@ -30,15 +31,20 @@ namespace I243HardwareMonitor.Views
 
         public MainWindow()
         {
+			Logger.Write("Initialize hardwareInfo");
             this.hardware = new HardwareInfo();
-            Debug.WriteLine(hardware.ToString());
+	        Logger.Write("Dump hardware info into logs");
+	        Logger.Write(hardware.ToString());
+			Debug.WriteLine(hardware.ToString());
             this.userControls = new List<UserControlMainView>();
             this.notificationHandlers = new List<NotificationHandler>();
             this.timer = new DispatcherTimer();
             this.timerforsavingdata = new DispatcherTimer();
+	        Logger.Write("Timers started");
 
-            InitializeComponent();
-            createMainUserControls();
+			InitializeComponent();
+	        Logger.Write("Generate general view");
+			createMainUserControls();
             initNotificationHandlers();
             //saving user hardware data into database table Users
             SaveUserDataIntoTable();
