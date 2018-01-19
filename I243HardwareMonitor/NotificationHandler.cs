@@ -34,7 +34,7 @@ namespace I243HardwareMonitor
 
 		private void createToast()
 		{
-			// https://msdn.microsoft.com/en-us/library/windows/desktop/hh802768(v=vs.85).aspx
+		/*	// https://msdn.microsoft.com/en-us/library/windows/desktop/hh802768(v=vs.85).aspx
 			// Get a toast XML template
 			XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
 
@@ -50,7 +50,7 @@ namespace I243HardwareMonitor
 			XmlNodeList imageElements = toastXml.GetElementsByTagName("image");
 
 			ToastNotification toast = new ToastNotification(toastXml);
-
+		*/
 		}
 	}
 }
