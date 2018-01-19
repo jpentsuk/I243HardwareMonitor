@@ -12,9 +12,9 @@ HardwareMonitor can only be run on Windows. It also requires Administrator right
 
 ## Authors
 
-* **Joonas Ervald** - [PurpleBooth](https://github.com/PurpleBooth)
-* **Jan Pentšuk** - [PurpleBooth](https://github.com/jpentsuk)
-* **Maie Palmeos** - [PurpleBooth](https://github.com/mpalmeos)
+* **Joonas Ervald** - [ginzae](https://github.com/ginzae)
+* **Jan Pentšuk** - [jpentsuk](https://github.com/jpentsuk)
+* **Maie Palmeos** - [mpalmeos](https://github.com/mpalmeos)
 
 ## License
 
