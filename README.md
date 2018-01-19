@@ -18,5 +18,5 @@ HardwareMonitor can only be run on Windows. It also requires Administrator right
 
 ## License
 
-This project is licensed under the MIT License - see the (LICENSE.md)
+This project is licensed under the MIT License - see the [LICENSE](LICENCE)
 
