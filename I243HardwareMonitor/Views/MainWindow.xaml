@@ -6,76 +6,76 @@
         xmlns:local="clr-namespace:I243HardwareMonitor.ViewModels"
         mc:Ignorable="d"
         Title="Hardware Monitor" Height="475" Width="500">
-    <Window.DataContext>
-        <local:ButtonCommands/>
-    </Window.DataContext>
-    <!-- Added window opening animation. Source: https://stackoverflow.com/questions/754739/how-to-animate-a-window -->
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
-                    <DoubleAnimation From="0" To="1"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
-    <TabControl>
-        <TabItem Header="General">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="465*"/>
-                    <ColumnDefinition Width="22*"/>
-                </Grid.ColumnDefinitions>
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,30,0.2,-0.2" Grid.ColumnSpan="2">
-                    <StackPanel Name="mainViewStackPanel" Orientation="Vertical"></StackPanel>
-                </ScrollViewer>
-                <Button Name="btn_Help" Content="?" Margin="0,5,5.2,0" Command="{Binding ShowHelpWindow}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30" Grid.ColumnSpan="2"/>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Database">
-            <Grid>
-                <Label Name="lbl_users">
-                </Label>
+	<Window.DataContext>
+		<local:ButtonCommands/>
+	</Window.DataContext>
+	<!-- Added window opening animation. Source: https://stackoverflow.com/questions/754739/how-to-animate-a-window -->
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="Loaded">
+			<BeginStoryboard>
+				<Storyboard Duration="00:00:3" Storyboard.TargetProperty="Opacity">
+					<DoubleAnimation From="0" To="1"/>
+				</Storyboard>
+			</BeginStoryboard>
+		</EventTrigger>
+	</Window.Triggers>
+	<TabControl>
+		<TabItem Header="General">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="465*"/>
+					<ColumnDefinition Width="22*"/>
+				</Grid.ColumnDefinitions>
+				<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,30,0.2,-0.2" Grid.ColumnSpan="2">
+					<StackPanel Name="mainViewStackPanel" Orientation="Vertical"></StackPanel>
+				</ScrollViewer>
+				<Button Name="btn_Help" Content="?" Margin="0,5,5.2,0" Command="{Binding ShowHelpWindow}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30" Grid.ColumnSpan="2"/>
+			</Grid>
+		</TabItem>
+		<TabItem Header="Database">
+			<Grid>
+				<Label Name="lbl_users">
+				</Label>
 
-                <DataGrid Name="dgd_users" HorizontalAlignment="Left" Height="66" Margin="22,25,0,0" VerticalAlignment="Top" Width="419"/>
-                <DataGrid x:Name="dgd_cpu" HorizontalAlignment="Left" Height="63" Margin="22,96,0,0" VerticalAlignment="Top" Width="419"/>
-                <Button Name="btn_savedata" Content="Start Saving Into Database" Margin="309,385,10,10" RenderTransformOrigin="0.52,1.567" Click="btn_savedata_Click"/>
-                <Button x:Name="btn_stopsavedata" Content="Stop Saving Into Database" Margin="137,385,182,10" RenderTransformOrigin="0.52,1.567" Click="btn_stopsavedata_Click"/>
-                <Button Name="btn_showdata" Content="Show Data" HorizontalAlignment="Left" Margin="413,0,0,0" VerticalAlignment="Top" Width="63" Click="btn_showdata_Click"/>
-                <DataGrid x:Name="dgd_gpu" HorizontalAlignment="Left" Height="53" Margin="22,164,0,0" VerticalAlignment="Top" Width="419"/>
-                <DataGrid x:Name="dgd_ram" HorizontalAlignment="Left" Height="58" Margin="22,222,0,0" VerticalAlignment="Top" Width="419"/>
-                <DataGrid x:Name="dgd_hdd" HorizontalAlignment="Left" Height="58" Margin="22,285,0,0" VerticalAlignment="Top" Width="419"/>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Preferences">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <StackPanel Name="stc_content_holder">
-                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
-                        <StackPanel Name="stc_preferences">
-                            <Label Name="label_settings_general"  Content="General tab settings: "></Label>
-                            <CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU load and temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
-                            <CheckBox Margin="5, 1, 5, 0" Name="chc_gpu" Content="Show GPU temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
-                            <CheckBox Margin="5, 1, 5, 0" Name="chc_ram" Content="Show RAM load" IsChecked="True" Click="chc_viewToggle_Changed"/>
-                            <CheckBox Margin="5, 1, 5, 0" Name="chc_hdd" Content="Show HDD used" IsChecked="True" Click="chc_viewToggle_Changed"/>
-                        </StackPanel>
-                    </Border>
-                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
-                        <StackPanel Name="stc_notif_settings">
-                            <Label Name="label_settngs_notifications"  Content="Notification settings: "></Label>
-                            <CheckBox Margin="5, 1, 5, 0" Name="chc_gpu_warning" Content="Enable GPU temperature warning" IsChecked="True" Click="chc_viewToggle_Changed"/>
-                            <TextBlock Margin="5, 1, 5, 0"><Run Text="Show GPU temperature warning at: "/><InlineUIContainer>
+				<DataGrid Name="dgd_users" HorizontalAlignment="Left" Height="66" Margin="22,25,0,0" VerticalAlignment="Top" Width="419"/>
+				<DataGrid x:Name="dgd_cpu" HorizontalAlignment="Left" Height="63" Margin="22,96,0,0" VerticalAlignment="Top" Width="419"/>
+				<Button Name="btn_savedata" Content="Start Saving Into Database" Margin="0,0,10,10" RenderTransformOrigin="0.52,1.567" Click="btn_savedata_Click" HorizontalAlignment="Right" Width="167" Height="21" VerticalAlignment="Bottom"/>
+				<Button x:Name="btn_stopsavedata" Content="Stop Saving Into Database" Margin="0,0,182,10" RenderTransformOrigin="0.52,1.567" Click="btn_stopsavedata_Click" Height="21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="167"/>
+				<Button Name="btn_showdata" Content="Show Data" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Top" Width="63" Click="btn_showdata_Click"/>
+				<DataGrid x:Name="dgd_gpu" HorizontalAlignment="Left" Height="53" Margin="22,164,0,0" VerticalAlignment="Top" Width="419"/>
+				<DataGrid x:Name="dgd_ram" HorizontalAlignment="Left" Height="58" Margin="22,222,0,0" VerticalAlignment="Top" Width="419"/>
+				<DataGrid x:Name="dgd_hdd" HorizontalAlignment="Left" Height="58" Margin="22,285,0,0" VerticalAlignment="Top" Width="419"/>
+			</Grid>
+		</TabItem>
+		<TabItem Header="Preferences">
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+				<StackPanel Name="stc_content_holder">
+					<Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
+						<StackPanel Name="stc_preferences">
+							<Label Name="label_settings_general"  Content="General tab settings: "></Label>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_cpu" Content="Show CPU load and temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_gpu" Content="Show GPU temperature" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_ram" Content="Show RAM load" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_hdd" Content="Show HDD used" IsChecked="True" Click="chc_viewToggle_Changed"/>
+						</StackPanel>
+					</Border>
+					<Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="5, 5, 5, 0">
+						<StackPanel Name="stc_notif_settings">
+							<Label Name="label_settngs_notifications"  Content="Notification settings: "></Label>
+							<CheckBox Margin="5, 1, 5, 0" Name="chc_gpu_warning" Content="Enable GPU temperature warning" IsChecked="True" Click="chc_viewToggle_Changed"/>
+							<TextBlock Margin="5, 1, 5, 0"><Run Text="Show GPU temperature warning at: "/><InlineUIContainer>
 									<TextBox Name="tb_cpu_temp_warning" Height="17" TextWrapping="Wrap" Text="75" Width="30" TextChanged="updateNotificationSettings"/>
 								</InlineUIContainer></TextBlock>
-                        </StackPanel>
-                    </Border>
-                    <StackPanel>
-                        <Button Content="Exit" Name="btn_exit" Width="60" HorizontalAlignment="Right" Margin="7" Command="{Binding ExitProgramCommand}"/>
-                        <StackPanel.DataContext>
-                            <local:NotifyIconViewModel/>
-                        </StackPanel.DataContext>
-                    </StackPanel>
-                </StackPanel>
-            </ScrollViewer>
-        </TabItem>
-    </TabControl>
+						</StackPanel>
+					</Border>
+					<StackPanel>
+						<Button Content="Exit" Name="btn_exit" Width="60" HorizontalAlignment="Right" Margin="7" Command="{Binding ExitProgramCommand}"/>
+						<StackPanel.DataContext>
+							<local:NotifyIconViewModel/>
+						</StackPanel.DataContext>
+					</StackPanel>
+				</StackPanel>
+			</ScrollViewer>
+		</TabItem>
+	</TabControl>
 </Window>
